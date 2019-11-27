@@ -78,7 +78,10 @@ body {
 
 .cell{
 
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   background: #c0c0c0;
   border: 1px solid black;
   border-width: 2px 0 0 2px;
@@ -86,7 +89,6 @@ body {
   width: 6.25%;
   &.covered {
     position: relative;
-    display: inline-block;
     background: #c0c0c0;
     border: 3px outset #ececec;
     // border-style: outset;
@@ -100,5 +102,12 @@ body {
 
     border: inset #ececec;
     width: 5.7%;
+  }
+}
+
+.bomb {
+  
+  &.none {
+    display: none;
   }
 }
