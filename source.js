@@ -3,6 +3,7 @@ const grid = document.querySelector('.grid')
 // const cells = [...document.querySelectorAll('.cell')]
 let rows = []
 let cells = []
+let bombCells = []
 
 function createGrid(x, y) {
   for(let i = 0; i < x; i++) {
@@ -11,7 +12,7 @@ function createGrid(x, y) {
     for(let j = 0; j < y; j++) {
       let rows = document.querySelectorAll('.row')
       let lastRow = rows[rows.length - 1]
-      let cell = `<div class="cell covered"></div>`.trim();
+      let cell = `<div class="cell covered" data-x="${j + 1}" data-y="${y - (i)}"></div>`.trim();
       lastRow.innerHTML += cell
     }
   }
@@ -20,7 +21,8 @@ function createGrid(x, y) {
     let children = [...row.children]
     cells.push(children)
   })
-  placeBombs(cells.flat())
+  cells = cells.flat()
+  console.log('INIT CELLS', cells)
 }
 
 
@@ -39,14 +41,42 @@ function placeBombs(cells) {
       i++
       console.log(i)
     }
-    let bombCells = [...document.querySelectorAll('.bomb.none')]
+    bombCells = [...document.querySelectorAll('.bomb.none')]
     console.log('BOMB CELLS', bombCells)
   }
 }
 
+function findAdjacent(test) {
+  console.log('this is the test: ', test.dataset.x - 1)
+  let adjacentCells = []
+  for(let i = -1; i < 2; i++){
+    for(let j = -1; j < 2; j++) {
+      console.log('i: ', i, 'j: ', j)
+      if((test.dataset.x - i) !== test.dataset.x && ((test.dataset.y - j) !== test.dataset.y)) {
+        adjacent = document.querySelector(`[data-x="${test.dataset.x - i}"][data-y="${test.dataset.y - j}"]`)
+        console.log(adjacent)
+        adjacentCells.push(adjacent)
+      }
+
+    }
+  }
+  adjacentCells.forEach(cell => {
+    cell.style = "background: blue"
+  })
+}
+
+function placeNumbers(cells) {
+  adjacent = document.querySelectorAll(`[data-x="${(11 - 1) }"]`)
+
+  let testy = document.querySelector('[data-x="11"][data-y="5"]')
+}
+
+
+
 
 
 createGrid(16, 16);
+placeBombs(cells);
 
 document.addEventListener('click', function(e) {
   console.log(e.target.classList.value)
@@ -61,6 +91,9 @@ document.addEventListener('click', function(e) {
 
   }
 })
+
+
+// document.addEventListener('click', reveal)
 
 // document.addEventListener('keypress', function(e){
 //   console.log(e)
