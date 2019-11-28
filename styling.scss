@@ -67,7 +67,8 @@ body {
 }
 
 .row {
-  // border: 2px solid black;
+  // border: .2px solid black;
+  // background: black;
   position: relative;
   display: flex;
   height: 6.25%;
@@ -106,7 +107,7 @@ body {
 }
 
 .bomb {
-  
+
   &.none {
     display: none;
   }
