@@ -1,10 +1,10 @@
 const grid = document.querySelector('.grid')
+// const rows = [...document.querySelectorAll('.row')]
+// const cells = [...document.querySelectorAll('.cell')]
 let rows = []
 let cells = []
 let bombCells = []
 
-
-//Creates grid on minesweeper board and assigns all "cells" to cell array
 function createGrid(x, y) {
   for(let i = 0; i < x; i++) {
     row = `<div class="row"></div>`.trim();
@@ -25,7 +25,7 @@ function createGrid(x, y) {
   console.log('INIT CELLS', cells)
 }
 
-//Takes in the array of cells and adds bombs
+
 function placeBombs(cells) {
   console.log('ALL CELLS IN placeBOMBS: ', cells)
   // console.log('this is a cell: ', cells[randomI], 'this is its index: ', cells.indexOf(cells[randomI]))
@@ -35,20 +35,19 @@ function placeBombs(cells) {
     cell = cells[randomI]
     console.log('INDIVIDUAL CELLS', cell)
 
-    if(cell.innerHTML !== `<div class="bomb none">X</div>`){
+    if(cell.innerText !== 'X'){
       console.log(cell)
-      cell.innerHTML = `<div class="bomb none">X</div>`
+      cell.innerText = 'X'
       i++
       console.log(i)
     }
-    bombCells = [...document.querySelectorAll('.bomb.none')]
-    console.log('BOMB CELLS', bombCells)
+
+    bombCells = cells.filter(cell => cell.innerText === 'X')
   }
 }
 
-//Function finds all adjacent cells (including diagonal) to any given cell
 function findAdjacent(cell) {
-  if(cell.innerHTML !== `<div class="bomb none">X</div>`){
+  // if(cell.innerText !== 'X'){
     let adjacentCells = []
     let adjacent;
     for(let i = -1; i < 2; i++){
@@ -59,44 +58,51 @@ function findAdjacent(cell) {
           adjacentCells.push(adjacent)
       }
     }
-
-    adjacentCells.forEach(cell => {
-      if(cell !== null && cell.innerHTML !== `<div class="bomb none">X</div>`){
-        cell.classList.remove('covered')
-      }
-    })
-
+    console.log('adjacent cells', adjacentCells)
     return adjacentCells;
-  }
-
+    // }
 
 }
-function placeNumbers(cells) {
-  adjacent = document.querySelectorAll(`[data-x="${(11 - 1) }"]`)
-  let testy = document.querySelector('[data-x="11"][data-y="5"]')
+//place numbers find all tiles that are adjacent to bombs that are not bombs themselves
+function placeNumbers(bombCells) {
+  let numbers = []
+
+  bombCells.forEach(bomb => {
+    let adjacent = findAdjacent(bomb)
+    console.log('ADJ IN NUMBERS', adjacent)
+    let notBombs = adjacent.filter(cell => cell !== null && cell.innerText !== 'X')
+    numbers.push(notBombs)
+    // console.log(numbers)
+  })
+  console.log(numbers)
 }
 
-//Handles click event. 1. Ends game if bomb. 2. Reveals tiles besides bombs if not a bomb
-function handleClick(e) {
+function reveal(cell) {
+  let adjacentCells = findAdjacent(cell)
+  adjacentCells.forEach(cell => {
+    if(cell !== null && cell.innerText !== 'X'){
+      cell.classList.remove('covered')
+    }
+  })
+}
+
+
+function handleClick(e){
   console.log(e.target.classList.value)
   let cell = e.target
   if(cell.classList.value === 'cell covered') {
-    findAdjacent(cell)
-    if(cell.innerHTML === `<div class="bomb none">X</div>`){
-          cell.innerHTML === `<div class="bomb none">X</div>` ? cell.innerHTML = `<div class="bomb">X</div>` : null
+    reveal(cell)
+    if(cell.innerText === 'X'){
+          cell.innerText === 'X' ? cell.innerText = 'X' : null
         alert('BOOM! GAME OVER')
     }
-
-
   }
 }
-
-
 
 createGrid(16, 16);
 placeBombs(cells);
 
-document.addEventListener('click', )
+document.addEventListener('click', handleClick)
 
 
 
