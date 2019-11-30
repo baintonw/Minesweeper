@@ -4,15 +4,19 @@ const grid = document.querySelector('.grid')
 let rows = []
 let cells = []
 let bombCells = []
+let numbers = []
+
 
 function createGrid(x, y) {
+  let id = 0
   for(let i = 0; i < x; i++) {
     row = `<div class="row"></div>`.trim();
     grid.innerHTML += row
     for(let j = 0; j < y; j++) {
       let rows = document.querySelectorAll('.row')
       let lastRow = rows[rows.length - 1]
-      let cell = `<div class="cell covered" data-x="${j + 1}" data-y="${y - (i)}"></div>`.trim();
+      let cell = `<div id="${id++}" class="cell covered" data-x="${j + 1}" data-y="${y - (i)}" data-number="0"></div>`.trim();
+
       lastRow.innerHTML += cell
     }
   }
@@ -63,18 +67,27 @@ function findAdjacent(cell) {
     // }
 
 }
+
 //place numbers find all tiles that are adjacent to bombs that are not bombs themselves
 function placeNumbers(bombCells) {
-  let numbers = []
 
   bombCells.forEach(bomb => {
     let adjacent = findAdjacent(bomb)
-    console.log('ADJ IN NUMBERS', adjacent)
+    // console.log('ADJ IN NUMBERS', adjacent)
     let notBombs = adjacent.filter(cell => cell !== null && cell.innerText !== 'X')
     numbers.push(notBombs)
-    // console.log(numbers)
   })
-  console.log(numbers)
+  numbers = numbers.flat()
+
+  for(let i = 0; i < numbers.length; i++) {
+    console.log(numbers[i].id)
+    numbers[i].dataset.number++
+    console.log(numbers[i])
+  }
+
+  numbers.forEach(cell => cell.dataset.number > 0 ? cell.innerText = cell.dataset.number : null)
+
+  // console.log(numbers)
 }
 
 function reveal(cell) {
@@ -101,6 +114,7 @@ function handleClick(e){
 
 createGrid(16, 16);
 placeBombs(cells);
+placeNumbers(bombCells);
 
 document.addEventListener('click', handleClick)
 
