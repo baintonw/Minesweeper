@@ -46,31 +46,34 @@ function placeBombs(cells) {
   }
 }
 
-function findAdjacent(test) {
-  console.log('this is the test: ', test.dataset.x - 1)
-  let adjacentCells = []
-  for(let i = -1; i < 2; i++){
-    for(let j = -1; j < 2; j++) {
-      console.log('i: ', i, 'j: ', j)
-      if((test.dataset.x - i) !== test.dataset.x && ((test.dataset.y - j) !== test.dataset.y)) {
-        adjacent = document.querySelector(`[data-x="${test.dataset.x - i}"][data-y="${test.dataset.y - j}"]`)
-        console.log(adjacent)
-        adjacentCells.push(adjacent)
+function findAdjacent(cell) {
+  if(cell.innerHTML !== `<div class="bomb none">X</div>`){
+    let adjacentCells = []
+    let adjacent;
+    for(let i = -1; i < 2; i++){
+      for(let j = -1; j < 2; j++) {
+        console.log('i: ', i, 'j: ', j)
+        adjacent = document.querySelector(`[data-x="${cell.dataset.x - i}"][data-y="${cell.dataset.y - j}"]`)
+          console.log('this is adjacent: ', adjacent)
+          adjacentCells.push(adjacent)
       }
-
     }
-  }
-  adjacentCells.forEach(cell => {
-    cell.style = "background: blue"
-  })
-}
 
+    adjacentCells.forEach(cell => {
+      if(cell !== null && cell.innerHTML !== `<div class="bomb none">X</div>`){
+        cell.classList.remove('covered')
+      }
+    })
+
+    return adjacentCells;
+  }
+
+
+}
 function placeNumbers(cells) {
   adjacent = document.querySelectorAll(`[data-x="${(11 - 1) }"]`)
-
   let testy = document.querySelector('[data-x="11"][data-y="5"]')
 }
-
 
 
 
@@ -82,7 +85,7 @@ document.addEventListener('click', function(e) {
   console.log(e.target.classList.value)
   let cell = e.target
   if(cell.classList.value === 'cell covered') {
-    cell.classList.remove('covered')
+    findAdjacent(cell)
     if(cell.innerHTML === `<div class="bomb none">X</div>`){
           cell.innerHTML === `<div class="bomb none">X</div>` ? cell.innerHTML = `<div class="bomb">X</div>` : null
         alert('BOOM! GAME OVER')
@@ -91,6 +94,8 @@ document.addEventListener('click', function(e) {
 
   }
 })
+
+
 
 
 // document.addEventListener('click', reveal)
