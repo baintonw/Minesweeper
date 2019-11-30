@@ -1,10 +1,10 @@
 const grid = document.querySelector('.grid')
-// const rows = [...document.querySelectorAll('.row')]
-// const cells = [...document.querySelectorAll('.cell')]
 let rows = []
 let cells = []
 let bombCells = []
 
+
+//Creates grid on minesweeper board and assigns all "cells" to cell array
 function createGrid(x, y) {
   for(let i = 0; i < x; i++) {
     row = `<div class="row"></div>`.trim();
@@ -25,7 +25,7 @@ function createGrid(x, y) {
   console.log('INIT CELLS', cells)
 }
 
-
+//Takes in the array of cells and adds bombs
 function placeBombs(cells) {
   console.log('ALL CELLS IN placeBOMBS: ', cells)
   // console.log('this is a cell: ', cells[randomI], 'this is its index: ', cells.indexOf(cells[randomI]))
@@ -46,6 +46,7 @@ function placeBombs(cells) {
   }
 }
 
+//Function finds all adjacent cells (including diagonal) to any given cell
 function findAdjacent(cell) {
   if(cell.innerHTML !== `<div class="bomb none">X</div>`){
     let adjacentCells = []
@@ -75,13 +76,8 @@ function placeNumbers(cells) {
   let testy = document.querySelector('[data-x="11"][data-y="5"]')
 }
 
-
-
-
-createGrid(16, 16);
-placeBombs(cells);
-
-document.addEventListener('click', function(e) {
+//Handles click event. 1. Ends game if bomb. 2. Reveals tiles besides bombs if not a bomb
+function handleClick(e) {
   console.log(e.target.classList.value)
   let cell = e.target
   if(cell.classList.value === 'cell covered') {
@@ -93,7 +89,14 @@ document.addEventListener('click', function(e) {
 
 
   }
-})
+}
+
+
+
+createGrid(16, 16);
+placeBombs(cells);
+
+document.addEventListener('click', )
 
 
 
