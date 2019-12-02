@@ -70,7 +70,6 @@ function findAdjacent(cell) {
 
 //place numbers find all tiles that are adjacent to bombs that are not bombs themselves
 function placeNumbers(bombCells) {
-
   bombCells.forEach(bomb => {
     let adjacent = findAdjacent(bomb)
     // console.log('ADJ IN NUMBERS', adjacent)
@@ -78,14 +77,24 @@ function placeNumbers(bombCells) {
     numbers.push(notBombs)
   })
   numbers = numbers.flat()
-
   for(let i = 0; i < numbers.length; i++) {
     console.log(numbers[i].id)
     numbers[i].dataset.number++
     console.log(numbers[i])
   }
+  numbers.forEach(cell => {
+    if(cell.dataset.number > 0) {
+      cell.innerText = cell.dataset.number
+      cell.dataset.number === "1" ? cell.style = "color: blue" : null
+      cell.dataset.number === "2" ? cell.style = "color: darkorange" : null
+      cell.dataset.number === "3" ? cell.style = "color: red" : null
+      cell.dataset.number === "4" ? cell.style = "color: maroon" : null
+      cell.dataset.number === "5" ? cell.style = "color: green" : null
 
-  numbers.forEach(cell => cell.dataset.number > 0 ? cell.innerText = cell.dataset.number : null)
+
+
+    }
+  })
 
   // console.log(numbers)
 }
