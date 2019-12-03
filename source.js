@@ -26,24 +26,24 @@ function createGrid(x, y) {
     cells.push(children)
   })
   cells = cells.flat()
-  console.log('INIT CELLS', cells)
+  // console.log('INIT CELLS', cells)
 }
 
 
 function placeBombs(cells) {
-  console.log('ALL CELLS IN placeBOMBS: ', cells)
+  // console.log('ALL CELLS IN placeBOMBS: ', cells)
   // console.log('this is a cell: ', cells[randomI], 'this is its index: ', cells.indexOf(cells[randomI]))
   let i = 0
   while (i < 40) {
     let randomI = (Math.floor(Math.random() * 256))
     cell = cells[randomI]
-    console.log('INDIVIDUAL CELLS', cell)
+    // console.log('INDIVIDUAL CELLS', cell)
 
     if(cell.innerText !== 'X'){
-      console.log(cell)
+      // console.log(cell)
       cell.innerText = 'X'
       i++
-      console.log(i)
+      // console.log(i)
     }
 
     bombCells = cells.filter(cell => cell.innerText === 'X')
@@ -56,13 +56,13 @@ function findAdjacent(cell) {
     let adjacent;
     for(let i = -1; i < 2; i++){
       for(let j = -1; j < 2; j++) {
-        console.log('i: ', i, 'j: ', j)
+        // console.log('i: ', i, 'j: ', j)
         adjacent = document.querySelector(`[data-x="${cell.dataset.x - i}"][data-y="${cell.dataset.y - j}"]`)
-          console.log('this is adjacent: ', adjacent)
+          // console.log('this is adjacent: ', adjacent)
           adjacentCells.push(adjacent)
       }
     }
-    console.log('adjacent cells', adjacentCells)
+    // console.log('adjacent cells', adjacentCells)
     return adjacentCells;
     // }
 
@@ -78,9 +78,9 @@ function placeNumbers(bombCells) {
   })
   numbers = numbers.flat()
   for(let i = 0; i < numbers.length; i++) {
-    console.log(numbers[i].id)
+    // console.log(numbers[i].id)
     numbers[i].dataset.number++
-    console.log(numbers[i])
+    // console.log(numbers[i])
   }
   numbers.forEach(cell => {
     if(cell.dataset.number > 0) {
@@ -100,34 +100,32 @@ function placeNumbers(bombCells) {
 }
 
 function reveal(cell) {
+  cell.classList.remove('covered')
 
-  let adjacentCells = findAdjacent(cell)
+  if(cell === null || (parseInt(cell.dataset.number)) > 0) {
+    return
+  } else if(cell.dataset.number === '0') {
+    console.log('Hey now!')
+    let adjacentCells = findAdjacent(cell)
+    let newCell;
 
-  adjacentCells.forEach(target => {
-    if(target !== null && target.innerText !== 'X'){
-      let clean = []
-      clean.push(target)
-      target.classList.remove('covered')
-      clean.forEach(cleanCell => {
-      })
-      console.log(clean)
-      // let group = findAdjacent(target)
-      // if(!group.includes(null || target.innerText !== 'X')) {
-      //   group.forEach(newTarget => {
-      //     reveal(newTarget)
-      //   })
+    for(let i = 0; i < adjacentCells.length; i++) {
+      newCell = adjacentCells[i]
+      if(newCell.dataset.number === '0' && newCell.classList.value === "cell covered" && newCell !== null) {
+        console.log('this is a zero value cell!', newCell)
+        reveal(newCell)
+        //recur
       }
-
-      // reveal(cell)
-    })
-
+    }
+  }
+     return
 }
 
 
 function handleClick(e){
-  console.log(e.target.classList.value)
+  // console.log(e.target.classList.value)
   let cell = e.target
-  if(cell.classList.value === 'cell covered') {
+  if(cell.classList.value === 'cell' || cell.classList.value === 'cell covered') {
     reveal(cell)
     if(cell.innerText === 'X'){
           cell.innerText === 'X' ? cell.innerText = 'X' : null
