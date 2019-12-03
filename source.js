@@ -100,12 +100,27 @@ function placeNumbers(bombCells) {
 }
 
 function reveal(cell) {
+
   let adjacentCells = findAdjacent(cell)
-  adjacentCells.forEach(cell => {
-    if(cell !== null && cell.innerText !== 'X'){
-      cell.classList.remove('covered')
-    }
-  })
+
+  adjacentCells.forEach(target => {
+    if(target !== null && target.innerText !== 'X'){
+      let clean = []
+      clean.push(target)
+      target.classList.remove('covered')
+      clean.forEach(cleanCell => {
+      })
+      console.log(clean)
+      // let group = findAdjacent(target)
+      // if(!group.includes(null || target.innerText !== 'X')) {
+      //   group.forEach(newTarget => {
+      //     reveal(newTarget)
+      //   })
+      }
+
+      // reveal(cell)
+    })
+
 }
 
 
