@@ -51,12 +51,13 @@ function placeBombs(cells) {
 }
 
 function findAdjacent(cell) {
+  if(cell === null || cell === undefined) return
     let adjacentCells = []
     let adjacent;
     for(let i = -1; i < 2; i++){
       for(let j = -1; j < 2; j++) {
         adjacent = document.querySelector(`[data-x="${cell.dataset.x - i}"][data-y="${cell.dataset.y - j}"]`)
-          adjacentCells.push(adjacent)
+            adjacentCells.push(adjacent)
       }
     }
     return adjacentCells;
@@ -94,10 +95,33 @@ function placeNumbers(bombCells) {
 }
 
 function reveal(cell) {
-  console.log(cell)
-  cell.classList.remove('covered')
+  if(cell === null || cell.innerText === 'X'){
+    console.log('STOP')
+    return
+  }
 
+    cell.classList.remove('covered')
+    console.log('this is the cell: ', cell)
+    if(cell.innerText === 'X') return;
+    let surrounding = findAdjacent(cell)
+    surrounding = surrounding.filter(newCell => newCell !== cell)
+    // surrounding = surrounding.filter(newCell => newCell !== null)
 
+    // surrounding = surrounding.filter(newCell => newCell !==)
+    for(let i = 0; i < surrounding.length; i++) {
+      let outCell = surrounding[i]
+      if(outCell === null || outCell.innerText === null) return;
+      console.log("outside loop: ", surrounding[i])
+      outCell.classList.remove('covered')
+      let newSurrounding = findAdjacent(surrounding[i])
+      for(let j = 0; j < newSurrounding.length; j++) {
+        let inCell = newSurrounding[j]
+        if(inCell === null || inCell.innerText === 'X') return;
+          inCell.classList.remove("covered")
+          console.log("inside loop: ", newSurrounding[j])
+
+        }
+      }
 }
 
 // if (mineCount==0) {
