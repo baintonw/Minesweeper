@@ -51,21 +51,15 @@ function placeBombs(cells) {
 }
 
 function findAdjacent(cell) {
-  // if(cell.innerText !== 'X'){
     let adjacentCells = []
     let adjacent;
     for(let i = -1; i < 2; i++){
       for(let j = -1; j < 2; j++) {
-        // console.log('i: ', i, 'j: ', j)
         adjacent = document.querySelector(`[data-x="${cell.dataset.x - i}"][data-y="${cell.dataset.y - j}"]`)
-          // console.log('this is adjacent: ', adjacent)
           adjacentCells.push(adjacent)
       }
     }
-    // console.log('adjacent cells', adjacentCells)
     return adjacentCells;
-    // }
-
 }
 
 //place numbers find all tiles that are adjacent to bombs that are not bombs themselves
@@ -100,37 +94,30 @@ function placeNumbers(bombCells) {
 }
 
 function reveal(cell) {
+  console.log(cell)
   cell.classList.remove('covered')
 
-  if(cell === null || (parseInt(cell.dataset.number)) > 0) {
-    return
-  } else if(cell.dataset.number === '0') {
-    console.log('Hey now!')
-    let adjacentCells = findAdjacent(cell)
-    let newCell;
 
-    for(let i = 0; i < adjacentCells.length; i++) {
-      newCell = adjacentCells[i]
-      if(newCell.dataset.number === '0' && newCell.classList.value === "cell covered" && newCell !== null) {
-        console.log('this is a zero value cell!', newCell)
-        reveal(newCell)
-        //recur
-      }
-    }
-  }
-     return
 }
 
+// if (mineCount==0) {
+//    //Reveal all adjacent cells as they do not have a mine
+//    for (var i=Math.max(cellRow-1,0); i<=Math.min(cellRow+1,9); i++) {
+//      for(var j=Math.max(cellCol-1,0); j<=Math.min(cellCol+1,9); j++) {
+//        //Recursive Call
+//        if (grid.rows[i].cells[j].innerHTML=="") clickCell(grid.rows[i].cells[j]);
+//      }
+//    }
+// }
 
 function handleClick(e){
-  // console.log(e.target.classList.value)
   let cell = e.target
-  if(cell.classList.value === 'cell' || cell.classList.value === 'cell covered') {
+  // console.log(cell)
+  if(cell.innerText === 'X') {
+    cell.classList.remove('covered')
+    alert('BOOM, game over')
+  } else {
     reveal(cell)
-    if(cell.innerText === 'X'){
-          cell.innerText === 'X' ? cell.innerText = 'X' : null
-        alert('BOOM! GAME OVER')
-    }
   }
 }
 
