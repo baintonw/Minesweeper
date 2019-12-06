@@ -5,6 +5,9 @@ let rows = []
 let cells = []
 let bombCells = []
 let numbers = []
+let openCells = []
+let i = 0
+
 
 
 function createGrid(x, y) {
@@ -94,35 +97,39 @@ function placeNumbers(bombCells) {
   // console.log(numbers)
 }
 
-function reveal(cell) {
-  if(cell === null || cell.innerText === 'X'){
-    console.log('STOP')
-    return
-  }
-
-    cell.classList.remove('covered')
-    console.log('this is the cell: ', cell)
-    if(cell.innerText === 'X') return;
-    let surrounding = findAdjacent(cell)
-    surrounding = surrounding.filter(newCell => newCell !== cell)
-    // surrounding = surrounding.filter(newCell => newCell !== null)
-
-    // surrounding = surrounding.filter(newCell => newCell !==)
-    for(let i = 0; i < surrounding.length; i++) {
-      let outCell = surrounding[i]
-      if(outCell === null || outCell.innerText === null) return;
-      console.log("outside loop: ", surrounding[i])
-      outCell.classList.remove('covered')
-      let newSurrounding = findAdjacent(surrounding[i])
-      for(let j = 0; j < newSurrounding.length; j++) {
-        let inCell = newSurrounding[j]
-        if(inCell === null || inCell.innerText === 'X') return;
-          inCell.classList.remove("covered")
-          console.log("inside loop: ", newSurrounding[j])
-
-        }
-      }
-}
+// function reveal(cell) {
+//   if(cell === null || cell.innerText === 'X'){
+//     console.log('STOP')
+//     return
+//   }
+//     cell.classList.remove('covered')
+//     console.log('this is the cell: ', cell)
+//     if(cell.innerText === 'X') return;
+//     let surrounding = findAdjacent(cell)
+//     surrounding = surrounding.filter(newCell => newCell !== cell)
+//     surrounding = surrounding.filter(newCell => newCell !== null)
+//
+//
+//     for(let i = 0; i < surrounding.length; i++) {
+//       let outCell = surrounding[i]
+//       console.log("outside loop: ", surrounding[i])
+//       outCell.classList.remove('covered')
+//       let newSurrounding = findAdjacent(surrounding[i])
+//
+//       console.log('newSurrounding', newSurrounding)
+//       for(let j = 0; j < newSurrounding.length; j++) {
+//         let inCell = newSurrounding[j]
+//
+//           console.log("inside loop: ", newSurrounding[j])
+//           inCell.classList.remove('covered')
+//           reveal(inCell)
+//
+//
+//         }
+//       }
+//
+//
+// }
 
 // if (mineCount==0) {
 //    //Reveal all adjacent cells as they do not have a mine
@@ -134,16 +141,51 @@ function reveal(cell) {
 //    }
 // }
 
-function handleClick(e){
-  let cell = e.target
-  // console.log(cell)
-  if(cell.innerText === 'X') {
-    cell.classList.remove('covered')
-    alert('BOOM, game over')
-  } else {
-    reveal(cell)
+function handleClick(e, cell){
+  if(e.target.classList.value !== 'cell covered') return;
+  let target = e.target
+  target.classList.remove('covered')
+  console.log('hit one!', e.target)
+
+  //Bomb case
+  if(target.innerText === 'X') {
+    alert('Boom!')
+  } else if(parseInt(target.dataset.number) > 0) {
+    console.log('Numbah!')
+    return
+  } else if(target.classList.value === 'cell' && e.target.classList.value !== 'cell covered') {
+      console.log('blank space', target)
   }
+
 }
+
+
+// if(e.target === null || cell === null) return;
+//
+// if(e.target.classList.value === 'cell covered' || e.target.classList.value === 'cell') {
+//   let cell = e.target
+//   cell.classList.remove('covered')
+//   console.log('this is what you ran the function on: ', cell)
+//   if(cell === null || cell === undefined || cell.classList.value === 'cell') return
+//   if(cell.innerText === 'X') {
+//     alert('BOOM GAME OVER')
+//   } else if(parseInt(cell.dataset.number) > 0) {
+//     // cell.classList.remove('covered')
+//   } else if(cell.dataset.number === '0') {
+//     // cell.classList.remove('covered')
+//
+//     let neighbors = findAdjacent(cell)
+//     neighbors = neighbors.filter(neighbor => neighbor !== cell && neighbor.classList.value === 'cell covered')
+//     console.log('weve got a clear one!', 'Here are the lovely neighbors: ', neighbors, neighbors.indexOf(cell))
+//     while(i < neighbors.length) {
+//       i++
+//       neighbors.forEach(neighbor => handleClick(e, neighbor))
+//
+//     }
+//
+//   }
+// }
+
 
 createGrid(16, 16);
 placeBombs(cells);
