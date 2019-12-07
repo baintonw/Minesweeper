@@ -106,15 +106,36 @@ function gameOver() {
 }
 
 function reveal(node) {
-  console.log('VOILA!')
+  if(node === null) return;
+  const empty = node.classList.value === 'cell'
+  //If the cell is empty, then break
+  if(empty) return;
+
+  //Uncover the cell
   node.classList.remove('covered')
+  let nodeNumber = parseInt(node.dataset.number)
+  //If the cell is a bomb, then end the game
   if(node.innerText === 'X') {
     gameOver()
+    //if the cell is numbered, then break
+  } else if(nodeNumber > 0) {
+    console.log('We are now clicking on a numbered node: ', node, nodeNumber)
+    return
+    //If the cell is empty...
+  } else if (nodeNumber === 0) {
+      console.log('Vacant cell: ', node)
+      let neighbors = findAdjacent(node)
+      neighbors = neighbors.filter(neighbor => neighbor !== node)
+      neighbors.forEach(neighbor => {
+        reveal(neighbor)
+      })
+      console.log('neighbors: ', neighbors)
+
   }
 }
 
 function handleClick(e){
-  if(e.target.classList.value === "cell covered") {
+  if(e.target.classList.value === "cell covered" || e.target.classList.value === "cell") {
     // console.log('you have clicked a covered cell')
     let cell = e.target
     reveal(cell)
