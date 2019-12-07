@@ -142,6 +142,7 @@ function placeNumbers(bombCells) {
 // }
 
 function handleClick(e, cell){
+  if(e.target === null || e.target === undefined) return;
   if(e.target.classList.value !== 'cell covered') return;
   let target = e.target
   target.classList.remove('covered')
@@ -150,11 +151,31 @@ function handleClick(e, cell){
   //Bomb case
   if(target.innerText === 'X') {
     alert('Boom!')
+    //Number case
   } else if(parseInt(target.dataset.number) > 0) {
     console.log('Numbah!')
     return
+    //Blank case
   } else if(target.classList.value === 'cell' && e.target.classList.value !== 'cell covered') {
+      target.classList.remove('covered')
       console.log('blank space', target)
+      let neighbors = findAdjacent(target)
+      //array of neighbors
+      neighbors = neighbors.filter(neighbor => neighbor !== target)
+      //for each neighbor, if it is still covered, run the click again
+
+      for(let i = 0; i < neighbors.length; i++) {
+        let allEmpty = []
+        let newNeighbors = findAdjacent(neighbors[i])
+        newNeighbors = newNeighbors.filter(neighbor => neighbor !== null)
+        // neighbors[i].classList.remove('covered')
+        for(let j = 0; j < newNeighbors.length; j++) {
+          // handleClick(newNeighbors[j])
+
+        }
+        console.log('new neighbors', newNeighbors)
+      }
+      console.log('friendly neighbors: ', neighbors)
   }
 
 }
