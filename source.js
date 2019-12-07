@@ -97,115 +97,33 @@ function placeNumbers(bombCells) {
   // console.log(numbers)
 }
 
-// function reveal(cell) {
-//   if(cell === null || cell.innerText === 'X'){
-//     console.log('STOP')
-//     return
-//   }
-//     cell.classList.remove('covered')
-//     console.log('this is the cell: ', cell)
-//     if(cell.innerText === 'X') return;
-//     let surrounding = findAdjacent(cell)
-//     surrounding = surrounding.filter(newCell => newCell !== cell)
-//     surrounding = surrounding.filter(newCell => newCell !== null)
-//
-//
-//     for(let i = 0; i < surrounding.length; i++) {
-//       let outCell = surrounding[i]
-//       console.log("outside loop: ", surrounding[i])
-//       outCell.classList.remove('covered')
-//       let newSurrounding = findAdjacent(surrounding[i])
-//
-//       console.log('newSurrounding', newSurrounding)
-//       for(let j = 0; j < newSurrounding.length; j++) {
-//         let inCell = newSurrounding[j]
-//
-//           console.log("inside loop: ", newSurrounding[j])
-//           inCell.classList.remove('covered')
-//           reveal(inCell)
-//
-//
-//         }
-//       }
-//
-//
-// }
+function gameOver() {
+  bombCells.forEach(bombCell => {
+    bombCell.classList.remove('covered')
+    bombCell.style.background = "red"
+  })
+  alert('BOOM, game over!')
+}
 
-// if (mineCount==0) {
-//    //Reveal all adjacent cells as they do not have a mine
-//    for (var i=Math.max(cellRow-1,0); i<=Math.min(cellRow+1,9); i++) {
-//      for(var j=Math.max(cellCol-1,0); j<=Math.min(cellCol+1,9); j++) {
-//        //Recursive Call
-//        if (grid.rows[i].cells[j].innerHTML=="") clickCell(grid.rows[i].cells[j]);
-//      }
-//    }
-// }
-
-function handleClick(e, cell){
-  if(e.target === null || e.target === undefined) return;
-  if(e.target.classList.value !== 'cell covered') return;
-  let target = e.target
-  target.classList.remove('covered')
-  console.log('hit one!', e.target)
-
-  //Bomb case
-  if(target.innerText === 'X') {
-    alert('Boom!')
-    //Number case
-  } else if(parseInt(target.dataset.number) > 0) {
-    console.log('Numbah!')
-    return
-    //Blank case
-  } else if(target.classList.value === 'cell' && e.target.classList.value !== 'cell covered') {
-      target.classList.remove('covered')
-      console.log('blank space', target)
-      let neighbors = findAdjacent(target)
-      //array of neighbors
-      neighbors = neighbors.filter(neighbor => neighbor !== target)
-      //for each neighbor, if it is still covered, run the click again
-
-      for(let i = 0; i < neighbors.length; i++) {
-        let allEmpty = []
-        let newNeighbors = findAdjacent(neighbors[i])
-        newNeighbors = newNeighbors.filter(neighbor => neighbor !== null)
-        // neighbors[i].classList.remove('covered')
-        for(let j = 0; j < newNeighbors.length; j++) {
-          // handleClick(newNeighbors[j])
-
-        }
-        console.log('new neighbors', newNeighbors)
-      }
-      console.log('friendly neighbors: ', neighbors)
+function reveal(node) {
+  console.log('VOILA!')
+  node.classList.remove('covered')
+  if(node.innerText === 'X') {
+    gameOver()
   }
+}
 
+function handleClick(e){
+  if(e.target.classList.value === "cell covered") {
+    // console.log('you have clicked a covered cell')
+    let cell = e.target
+    reveal(cell)
+  }
 }
 
 
-// if(e.target === null || cell === null) return;
-//
-// if(e.target.classList.value === 'cell covered' || e.target.classList.value === 'cell') {
-//   let cell = e.target
-//   cell.classList.remove('covered')
-//   console.log('this is what you ran the function on: ', cell)
-//   if(cell === null || cell === undefined || cell.classList.value === 'cell') return
-//   if(cell.innerText === 'X') {
-//     alert('BOOM GAME OVER')
-//   } else if(parseInt(cell.dataset.number) > 0) {
-//     // cell.classList.remove('covered')
-//   } else if(cell.dataset.number === '0') {
-//     // cell.classList.remove('covered')
-//
-//     let neighbors = findAdjacent(cell)
-//     neighbors = neighbors.filter(neighbor => neighbor !== cell && neighbor.classList.value === 'cell covered')
-//     console.log('weve got a clear one!', 'Here are the lovely neighbors: ', neighbors, neighbors.indexOf(cell))
-//     while(i < neighbors.length) {
-//       i++
-//       neighbors.forEach(neighbor => handleClick(e, neighbor))
-//
-//     }
-//
-//   }
-// }
+
+
 
 
 createGrid(16, 16);
@@ -213,28 +131,3 @@ placeBombs(cells);
 placeNumbers(bombCells);
 
 document.addEventListener('click', handleClick)
-
-
-
-
-// document.addEventListener('click', reveal)
-
-// document.addEventListener('keypress', function(e){
-//   console.log(e)
-//   if(e.code === 'Space') {
-//     cells = document.querySelectorAll('.cell')
-//     cells.forEach(cell => {
-//       cell.classList.remove('covered')
-//       e.target.innerHTML === `<div class="bomb none">X</div>` ? cell.innerHTML = `<div class="bomb">X</div>` : null
-//     })
-//   }
-// })
-
-// placeBombs();
-
-// cells.forEach(cell => {
-//   cell.addEventListener('click', function(){
-//     console.log('this cell: ', this, this)
-//     cell.classList.remove('covered')
-//   })
-// })
