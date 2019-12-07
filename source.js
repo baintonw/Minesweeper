@@ -1,6 +1,5 @@
 const grid = document.querySelector('.grid')
-// const rows = [...document.querySelectorAll('.row')]
-// const cells = [...document.querySelectorAll('.cell')]
+
 let rows = []
 let cells = []
 let bombCells = []
@@ -8,7 +7,24 @@ let numbers = []
 let openCells = []
 let i = 0
 
+let smiley = document.querySelector('#smiley')
 
+function reset() {
+  grid.innerHTML = ''
+  rows = []
+  cells = []
+  bombCells = []
+  numbers = []
+  openCells = []
+  i = 0
+}
+
+function init() {
+  reset()
+  createGrid(16, 16);
+  placeBombs(cells);
+  placeNumbers(bombCells);
+}
 
 function createGrid(x, y) {
   let id = 0
@@ -83,11 +99,7 @@ function placeNumbers(bombCells) {
   numbers.forEach(cell => {
     if(cell.dataset.number > 0) {
       cell.innerText = cell.dataset.number
-      cell.dataset.number === "1" ? cell.style = "color: blue" : null
-      cell.dataset.number === "2" ? cell.style = "color: darkorange" : null
-      cell.dataset.number === "3" ? cell.style = "color: red" : null
-      cell.dataset.number === "4" ? cell.style = "color: maroon" : null
-      cell.dataset.number === "5" ? cell.style = "color: green" : null
+
 
 
 
@@ -103,6 +115,7 @@ function gameOver() {
     bombCell.style.background = "red"
   })
   alert('BOOM, game over!')
+  return
 }
 
 function reveal(node) {
@@ -119,8 +132,13 @@ function reveal(node) {
     gameOver()
     //if the cell is numbered, then break
   } else if(nodeNumber > 0) {
-    console.log('We are now clicking on a numbered node: ', node, nodeNumber)
-    return
+      console.log('We are now clicking on a numbered node: ', node, nodeNumber)
+      node.dataset.number === "1" ? node.style = "color: blue" : null
+      node.dataset.number === "2" ? node.style = "color: darkorange" : null
+      node.dataset.number === "3" ? node.style = "color: red" : null
+      node.dataset.number === "4" ? node.style = "color: maroon" : null
+      node.dataset.number === "5" ? node.style = "color: green" : null
+      return
     //If the cell is empty...
   } else if (nodeNumber === 0) {
       console.log('Vacant cell: ', node)
@@ -142,13 +160,11 @@ function handleClick(e){
   }
 }
 
+init()
 
 
 
 
-
-createGrid(16, 16);
-placeBombs(cells);
-placeNumbers(bombCells);
 
 document.addEventListener('click', handleClick)
+smiley.addEventListener('click', init)
