@@ -76,7 +76,10 @@ body {
   // padding: .5px;
 }
 
-
+// .flag {
+//   // opacity: 1;
+//   background-color: red;
+// }
 .cell{
 
   display: flex;
@@ -99,15 +102,15 @@ body {
     border-width: 2px 0 0 2px;
     height: 100%;
     width: 6.25%;
+    // color: transparent;
 
-    color: transparent;
   }
   &:active {
-    // background: red;
-    // display: block;
-
     border: inset #ececec;
     width: 5.7%;
+  }
+  &.flag {
+    background-color: red;
   }
 }
 

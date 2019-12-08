@@ -4,8 +4,10 @@ let rows = []
 let cells = []
 let bombCells = []
 let numbers = []
-let openCells = []
-let i = 0
+
+let correct = 0
+// let openCells = []
+// let i = 0
 
 let smiley = document.querySelector('#smiley')
 
@@ -99,10 +101,6 @@ function placeNumbers(bombCells) {
   numbers.forEach(cell => {
     if(cell.dataset.number > 0) {
       cell.innerText = cell.dataset.number
-
-
-
-
     }
   })
 
@@ -160,6 +158,12 @@ function handleClick(e){
   }
 }
 
+function checkWin() {
+  if(correct === bombCells.length) {
+    alert('Yay! You Win!')
+  }
+}
+
 init()
 
 
@@ -167,4 +171,27 @@ init()
 
 
 document.addEventListener('click', handleClick)
+
+//drops flags
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+    if(e.target.classList.value === "cell covered flag") {
+      let cell = e.target
+      cell.classList.remove('flag')
+      if(cell.innerText = 'X') {
+        correct--
+      }
+    } else if(e.target.classList.value === "cell covered") {
+      let cell = e.target
+      cell.classList.add('flag')
+      if(cell.innerText = 'X') {
+        correct++
+        checkWin()
+      }
+      console.log('RIGHT CLICK - this is the innerText: ', cell.innerText, cell.classList.value)
+      // cell.style = "background-color: red"
+    }
+    return false;
+}, false);
+
 smiley.addEventListener('click', init)
