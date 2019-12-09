@@ -8,8 +8,9 @@ let numbers = []
 let covered = 0
 let correct = 0
 
-
 let smiley = document.querySelector('#smiley')
+
+let mouseTarget;
 
 function reset() {
   grid.innerHTML = ''
@@ -124,6 +125,10 @@ function reveal(node) {
   const empty = node.classList.value === 'cell'
   //If the cell is empty, then break
   if(empty) return;
+  if([...node.classList].includes('flag')) return
+
+
+  // if node is flagged
 
   //Uncover the cell
   node.classList.remove('covered')
@@ -162,23 +167,10 @@ function handleClick(e){
   }
 }
 
-function checkWin() {
-  if(correct === bombCells.length && covered === 0) {
-    alert('Yay! You Win!')
-  }
-}
-
-init()
-
-
-
-
-
-document.addEventListener('click', handleClick)
-
-//drops flags
-document.addEventListener('contextmenu', function(e) {
-    e.preventDefault();
+function plantFlag(e) {
+      e.preventDefault();
+    console.log(e.target)
+    // let e.target = e.target
     if(e.target.classList.value === "cell covered flag") {
       let cell = e.target
       cell.classList.remove('flag')
@@ -195,6 +187,41 @@ document.addEventListener('contextmenu', function(e) {
       console.log('RIGHT CLICK - this is the innerText: ', cell.innerText, cell.classList.value)
     }
     return false;
-}, false);
+}
+
+function checkWin() {
+  if(correct === bombCells.length && covered === 0) {
+    alert('Yay! You Win!')
+  }
+}
+
+function handleCheck(e) {
+  console.log("e.code: ", e.code, "e.target: ", e.target, "mouseTarget: ", mouseTarget)
+  if(e.code === "Space") {
+      console.log(mouseTarget)
+      plantFlag(mouseTarget)
+
+  }
+
+}
+
+init()
+
+
+
+
+
+document.addEventListener('click', handleClick)
+
+//drops flags
+document.addEventListener('contextmenu', plantFlag, false);
+
+//Determines mouseTarget on mouseover
+document.addEventListener('mouseover', function(e) {
+  console.log('mouse event: ', e, 'mouse target: ', e.target)
+  mouseTarget = e.target
+})
+
+document.addEventListener('keydown', handleCheck)
 
 smiley.addEventListener('click', init)
