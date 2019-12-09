@@ -159,13 +159,39 @@ function reveal(node) {
   }
 }
 
+function check(node) {
+  // console.log('checking!')
+  let neighbors = findAdjacent(node)
+  neighbors = neighbors.filter(neighbor => neighbor !== node && neighbor.classList.value !== "cell")
+  neighbors.forEach(neighbor => {
+    if(neighbor.innerText === 'X' && !([...neighbor.classList].includes('flag'))) {
+      console.log('Boom', neighbor)
+      gameOver()
+    } else if([...neighbor.classList].includes('flag')){
+      return
+    } else {
+
+      neighbor.dataset.number === "1" ? neighbor.style = "color: blue" : null
+      neighbor.dataset.number === "2" ? neighbor.style = "color: darkorange" : null
+      neighbor.dataset.number === "3" ? neighbor.style = "color: red" : null
+      neighbor.dataset.number === "4" ? neighbor.style = "color: maroon" : null
+      neighbor.dataset.number === "5" ? neighbor.style = "color: green" : null
+
+      neighbor.classList.remove('covered')
+
+    }
+  })
+  console.log(neighbors)
+
+}
+
 function handleClick(e){
   if(e.target.classList.value === "cell covered" || e.target.classList.value === "cell") {
     // console.log('you have clicked a covered cell')
     let cell = e.target
     reveal(cell)
     checkWin()
-    
+
   }
 }
 
@@ -206,7 +232,12 @@ function handleCheck(e) {
   console.log("e.code: ", e.code, "e.target: ", e.target, "mouseTarget: ", mouseTarget)
   if(e.code === "Space") {
       console.log(mouseTarget)
-      plantFlag(e, mouseTarget)
+      if(mouseTarget.classList.value === "cell covered" || mouseTarget.classList.value === "cell covered flag") {
+        plantFlag(e, mouseTarget)
+      } else if(mouseTarget.classList.value === "cell") {
+          check(mouseTarget)
+      }
+
 
   }
 
