@@ -167,24 +167,29 @@ function handleClick(e){
   }
 }
 
-function plantFlag(e) {
-      e.preventDefault();
-    console.log(e.target)
-    // let e.target = e.target
-    if(e.target.classList.value === "cell covered flag") {
-      let cell = e.target
+function plantFlag(e, node) {
+    console.log('Which event is this? ', e, 'which node is this ', node)
+    let cell;
+    if(!node) {
+      e.preventDefault()
+      cell = e.target
+    } else if(node) {
+      cell = node
+    }
+    console.log(cell)
+
+    if(cell.classList.value === "cell covered flag") {
       cell.classList.remove('flag')
       if(cell.innerText === 'X') {
         correct--
       }
-    } else if(e.target.classList.value === "cell covered") {
-      let cell = e.target
+    } else if(cell.classList.value === "cell covered") {
       cell.classList.add('flag')
       if(cell.innerText === 'X') {
         correct++
         checkWin()
       }
-      console.log('RIGHT CLICK - this is the innerText: ', cell.innerText, cell.classList.value)
+      // console.log('RIGHT CLICK - this is the innerText: ', cell.innerText, cell.classList.value)
     }
     return false;
 }
@@ -199,7 +204,7 @@ function handleCheck(e) {
   console.log("e.code: ", e.code, "e.target: ", e.target, "mouseTarget: ", mouseTarget)
   if(e.code === "Space") {
       console.log(mouseTarget)
-      plantFlag(mouseTarget)
+      plantFlag(e, mouseTarget)
 
   }
 
