@@ -164,6 +164,8 @@ function handleClick(e){
     // console.log('you have clicked a covered cell')
     let cell = e.target
     reveal(cell)
+    checkWin()
+    
   }
 }
 
