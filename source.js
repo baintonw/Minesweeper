@@ -5,9 +5,9 @@ let cells = []
 let bombCells = []
 let numbers = []
 
+let covered = 0
 let correct = 0
-// let openCells = []
-// let i = 0
+
 
 let smiley = document.querySelector('#smiley')
 
@@ -18,6 +18,7 @@ function reset() {
   bombCells = []
   numbers = []
   openCells = []
+  correct = 0
   i = 0
 }
 
@@ -26,6 +27,8 @@ function init() {
   createGrid(16, 16);
   placeBombs(cells);
   placeNumbers(bombCells);
+
+  covered = cells.length - bombCells.length
 }
 
 function createGrid(x, y) {
@@ -124,6 +127,7 @@ function reveal(node) {
 
   //Uncover the cell
   node.classList.remove('covered')
+  covered--
   let nodeNumber = parseInt(node.dataset.number)
   //If the cell is a bomb, then end the game
   if(node.innerText === 'X') {
@@ -159,7 +163,7 @@ function handleClick(e){
 }
 
 function checkWin() {
-  if(correct === bombCells.length) {
+  if(correct === bombCells.length && covered === 0) {
     alert('Yay! You Win!')
   }
 }
@@ -178,18 +182,17 @@ document.addEventListener('contextmenu', function(e) {
     if(e.target.classList.value === "cell covered flag") {
       let cell = e.target
       cell.classList.remove('flag')
-      if(cell.innerText = 'X') {
+      if(cell.innerText === 'X') {
         correct--
       }
     } else if(e.target.classList.value === "cell covered") {
       let cell = e.target
       cell.classList.add('flag')
-      if(cell.innerText = 'X') {
+      if(cell.innerText === 'X') {
         correct++
         checkWin()
       }
       console.log('RIGHT CLICK - this is the innerText: ', cell.innerText, cell.classList.value)
-      // cell.style = "background-color: red"
     }
     return false;
 }, false);
