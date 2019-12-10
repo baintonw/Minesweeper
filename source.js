@@ -162,7 +162,10 @@ function reveal(node) {
 function check(node) {
   // console.log('checking!')
   let neighbors = findAdjacent(node)
-  neighbors = neighbors.filter(neighbor => neighbor !== node && neighbor.classList.value !== "cell")
+  console.log('neighbors: ', neighbors)
+  // neighbors = neighbors.filter(neighbor => neighbor !== node && neighbor.classList.value !== "cell")
+  neighbors = neighbors.filter(neighbor => !!neighbor)
+  console.log('neighbors after filter: ', neighbors)
   neighbors.forEach(neighbor => {
     if(neighbor.innerText === 'X' && !([...neighbor.classList].includes('flag'))) {
       console.log('Boom', neighbor)
@@ -229,9 +232,9 @@ function checkWin() {
 }
 
 function handleCheck(e) {
-  console.log("e.code: ", e.code, "e.target: ", e.target, "mouseTarget: ", mouseTarget)
+  // console.log("e.code: ", e.code, "e.target: ", e.target, "mouseTarget: ", mouseTarget)
   if(e.code === "Space") {
-      console.log(mouseTarget)
+      // console.log(mouseTarget)
       if(mouseTarget.classList.value === "cell covered" || mouseTarget.classList.value === "cell covered flag") {
         plantFlag(e, mouseTarget)
       } else if(mouseTarget.classList.value === "cell") {
@@ -256,7 +259,7 @@ document.addEventListener('contextmenu', plantFlag, false);
 
 //Determines mouseTarget on mouseover
 document.addEventListener('mouseover', function(e) {
-  console.log('mouse event: ', e, 'mouse target: ', e.target)
+  // console.log('mouse event: ', e, 'mouse target: ', e.target)
   mouseTarget = e.target
 })
 
