@@ -1,4 +1,5 @@
 const grid = document.querySelector('.grid')
+const counter = document.querySelector('.counter')
 
 let rows = []
 let cells = []
@@ -7,6 +8,7 @@ let numbers = []
 
 let covered = 0
 let correct = 0
+let flags = 0
 
 let smiley = document.querySelector('#smiley')
 
@@ -30,6 +32,8 @@ function init() {
   placeNumbers(bombCells);
 
   covered = cells.length - bombCells.length
+  flags = bombCells.length
+  counter.innerText = flags
 }
 
 function createGrid(x, y) {
