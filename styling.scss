@@ -53,6 +53,12 @@ body {
   width: 20%;
   height: 80%;
   right: 0%;
+  color: red;
+  font-family: 'Source Sans Pro', sans-serif;
+
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
   // top: 0%;
 }
 

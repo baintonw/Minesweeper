@@ -1,5 +1,6 @@
 const grid = document.querySelector('.grid')
 const counter = document.querySelector('.counter')
+const timer = document.querySelector('.timer')
 
 let rows = []
 let cells = []
@@ -9,6 +10,9 @@ let numbers = []
 let covered = 0
 let correct = 0
 let flags = 0
+
+let playing = false
+let seconds = 0
 
 let smiley = document.querySelector('#smiley')
 
@@ -34,6 +38,8 @@ function init() {
   covered = cells.length - bombCells.length
   flags = bombCells.length
   counter.innerText = flags
+
+  timer.innerText = seconds
 }
 
 function createGrid(x, y) {
@@ -120,7 +126,9 @@ function gameOver() {
     bombCell.classList.remove('covered')
     bombCell.style.background = "red"
   })
+  playing = false
   alert('BOOM, game over!')
+
   return
 }
 
@@ -196,6 +204,7 @@ function handleClick(e){
   if(e.target.classList.value === "cell covered" || e.target.classList.value === "cell") {
     // console.log('you have clicked a covered cell')
     let cell = e.target
+    playing === false ? playing = true : null
     reveal(cell)
     checkWin()
 
@@ -232,6 +241,7 @@ function plantFlag(e, node) {
 function checkWin() {
   if(correct === bombCells.length && covered === 0) {
     alert('Yay! You Win!')
+    playing = false
   }
 }
 
