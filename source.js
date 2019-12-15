@@ -192,7 +192,8 @@ function check(node) {
       neighbor.dataset.number === "4" ? neighbor.style = "color: maroon" : null
       neighbor.dataset.number === "5" ? neighbor.style = "color: green" : null
 
-      neighbor.classList.remove('covered')
+      // neighbor.classList.remove('covered')
+      reveal(neighbor)
 
     }
   })
@@ -242,6 +243,7 @@ function checkWin() {
   if(correct === bombCells.length && covered === 0) {
     alert('Yay! You Win!')
     playing = false
+    smiley.src = "./public/minesweeper faces cool.png"
   }
 }
 
@@ -254,10 +256,7 @@ function handleCheck(e) {
       } else if(mouseTarget.classList.value === "cell") {
           check(mouseTarget)
       }
-
-
   }
-
 }
 
 init()
