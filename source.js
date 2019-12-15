@@ -42,6 +42,19 @@ function init() {
   timer.innerText = seconds
 }
 
+let start;
+
+function timeElapsed() {
+  seconds++
+  timer.innerText = seconds
+}
+
+function stop() {
+  clearInterval(start)
+}
+
+
+
 function createGrid(x, y) {
   let id = 0
   for(let i = 0; i < x; i++) {
@@ -127,6 +140,7 @@ function gameOver() {
     bombCell.style.background = "red"
   })
   playing = false
+  stop()
   alert('BOOM, game over!')
 
   return
@@ -205,7 +219,10 @@ function handleClick(e){
   if(e.target.classList.value === "cell covered" || e.target.classList.value === "cell") {
     // console.log('you have clicked a covered cell')
     let cell = e.target
-    playing === false ? playing = true : null
+    if(playing === false) {
+      playing = true
+      start = setInterval(timeElapsed, 1000)
+    }
     reveal(cell)
     checkWin()
 
@@ -243,6 +260,7 @@ function checkWin() {
   if(correct === bombCells.length && covered === 0) {
     alert('Yay! You Win!')
     playing = false
+    stop()
     smiley.src = "./public/minesweeper faces cool.png"
   }
 }
