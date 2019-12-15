@@ -243,14 +243,18 @@ function plantFlag(e, node) {
     }
 
     console.log(cell)
-
     if(cell.classList.value === "cell covered flag") {
       cell.classList.remove('flag')
+      flags++
+      counter.innerText = flags
       if(cell.innerText === 'X') {
         correct--
       }
     } else if(cell.classList.value === "cell covered") {
       cell.classList.add('flag')
+      flags--
+      // flags < 0 ? flags = 0 : null
+      counter.innerText = flags
       if(cell.innerText === 'X') {
         correct++
         checkWin()
