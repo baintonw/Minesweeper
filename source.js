@@ -19,6 +19,7 @@ let smiley = document.querySelector('#smiley')
 let mouseTarget;
 
 function reset() {
+  stop()
   grid.innerHTML = ''
   rows = []
   cells = []
@@ -27,6 +28,7 @@ function reset() {
   openCells = []
   correct = 0
   i = 0
+
 }
 
 function init() {
@@ -212,7 +214,7 @@ function check(node) {
     }
   })
   console.log(neighbors)
-
+  checkWin()
 }
 
 function handleClick(e){
@@ -236,8 +238,10 @@ function plantFlag(e, node) {
       e.preventDefault()
       cell = e.target
     } else if(node) {
+      console.log('is node!')
       cell = node
     }
+
     console.log(cell)
 
     if(cell.classList.value === "cell covered flag") {
