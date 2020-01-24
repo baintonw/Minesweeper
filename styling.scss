@@ -13,20 +13,23 @@ body {
 }
 
 .header {
-    border: 2px solid blue;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 14%;
-    width: 100%;
+  border: 2px solid blue;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 14%;
+  width: 100%;
 
 }
 
+//smiley variables
+$rem: 1rem;
 #smiley {
   position: relative;
   border: 1px solid black;
-  height: 4rem;
+  height: $rem*4;
+  width: $rem*4.5;
   // left: 45%;
 }
 //counter
@@ -61,171 +64,171 @@ $digit-height: 200px;
 
 
   &.zero > {
-    #top {
+    .top {
       opacity: 1;
     }
-    #top-right {
+    .top-right {
       opacity: 1;
     }
-    #bottom-right {
+    .bottom-right {
       opacity: 1;
     }
-    #bottom {
+    .bottom {
       opacity: 1;
     }
-    #bottom-left {
+    .bottom-left {
       opacity: 1;
     }
-    #top-left {
+    .top-left {
       opacity: 1;
     }
   }
 
   &.one {
-    #top-right {
+    .top-right {
       opacity: 1;
     }
-    #bottom-right {
+    .bottom-right {
       opacity: 1;
     }
   }
 
   &.two {
-    #top {
+    .top {
       opacity: 1;
     }
-    #top-right {
+    .top-right {
       opacity: 1;
     }
-    #middle {
+    .middle {
       opacity: 1;
     }
-    #bottom-left {
+    .bottom-left {
       opacity: 1;
     }
-    #bottom {
+    .bottom {
       opacity: 1;
     }
   }
 
   &.three > {
-    #top {
+    .top {
       opacity: 1;
     }
-    #top-right {
+    .top-right {
       opacity: 1;
     }
-    #bottom-right {
+    .bottom-right {
       opacity: 1;
     }
-    #bottom {
+    .bottom {
       opacity: 1;
     }
-    #middle {
+    .middle {
       opacity: 1;
     }
   }
 
   &.four > {
-    #top-left {
+    .top-left {
       opacity: 1;
     }
-    #top-right {
+    .top-right {
       opacity: 1;
     }
-    #bottom-right {
+    .bottom-right {
       opacity: 1;
     }
-    #middle {
+    .middle {
       opacity: 1;
     }
   }
 
   &.five > {
-    #top {
+    .top {
       opacity: 1;
     }
-    #top-left {
+    .top-left {
       opacity: 1;
     }
-    #middle {
+    .middle {
       opacity: 1;
     }
-    #bottom-right {
+    .bottom-right {
       opacity: 1;
     }
-    #bottom {
+    .bottom {
       opacity: 1;
     }
   }
   &.six > {
-    #top {
+    .top {
       opacity: 1;
     }
-    #top-left {
+    .top-left {
       opacity: 1;
     }
-    #middle {
+    .middle {
       opacity: 1;
     }
-    #bottom-right {
+    .bottom-right {
       opacity: 1;
     }
-    #bottom-left {
+    .bottom-left {
       opacity: 1;
     }
-    #bottom {
+    .bottom {
       opacity: 1;
     }
   }
   &.seven {
-    #top {
+    .top {
       opacity: 1;
     }
-    #top-right {
+    .top-right {
       opacity: 1;
     }
-    #bottom-right {
+    .bottom-right {
       opacity: 1;
     }
   }
   &.eight > {
-    #top {
+    .top {
       opacity: 1;
     }
-    #top-right {
+    .top-right {
       opacity: 1;
     }
-    #bottom-right {
+    .bottom-right {
       opacity: 1;
     }
-    #bottom {
+    .bottom {
       opacity: 1;
     }
-    #bottom-left {
+    .bottom-left {
       opacity: 1;
     }
-    #top-left {
+    .top-left {
       opacity: 1;
     }
-    #middle {
+    .middle {
       opacity: 1;
     }
   }
   &.nine {
-    #top {
+    .top {
       opacity: 1;
     }
-    #top-left {
+    .top-left {
       opacity :1;
     }
-    #top-right {
+    .top-right {
       opacity: 1;
     }
-    #middle {
+    .middle {
       opacity: 1;
     }
-    #bottom-right {
+    .bottom-right {
       opacity: 1;
     }
   }
@@ -238,7 +241,7 @@ $digit-height: 200px;
 
 
 
-#top {
+.top {
   position: absolute;
 border-top: 4px solid #bada55;
 border-left: 10px solid transparent;
@@ -248,7 +251,7 @@ width: 29px;
 opacity: 0;
 }
 
-#top-right {
+.top-right {
   position: absolute;
   top: 24.6%;
   right: -29.5%;
@@ -261,7 +264,7 @@ opacity: 0;
   opacity: 0;
 }
 
-#bottom-right {
+.bottom-right {
       position: absolute;
       bottom: 20%;
       right: -30.5%;
@@ -274,7 +277,7 @@ opacity: 0;
       opacity: 0;
 }
 
-#bottom {
+.bottom {
     position: absolute;
     bottom: 0px;
     border-bottom: 4px solid #bada55;
@@ -286,10 +289,10 @@ opacity: 0;
     opacity: 0;
 }
 
-#bottom-left {
+.bottom-left {
     position: absolute;
     top: 75.6%;
-    left: -25%;
+    left: -27%;
     border-bottom: 4px solid #bada55;
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
@@ -300,30 +303,30 @@ opacity: 0;
 
 }
 
-#top-left {
+.top-left {
 
   position: absolute;
-      top: 25.6%;
-      left: -25%;
-      border-bottom: 4px solid #bada55;
-      border-left: 10px solid transparent;
-      border-right: 10px solid transparent;
-      height: 0;
-      width: 40%;
-      transform: rotate(90deg);
-      opacity: 0;
+  top: 25.6%;
+  left: -32%;
+  border-bottom: 4px solid #bada55;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  height: 0;
+  width: 40%;
+  transform: rotate(90deg);
+  opacity: 0;
 
 
 }
 
-#middle {
+.middle {
   position: absolute;
   top: 50%;
-  border-bottom: 8px solid #bada55;
-  border-left: 20px solid transparent;
-  border-right: 20px solid transparent;
+  border-bottom: 4px solid #bada55;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
   height: 0;
-  width: 60px;
+  width: 26px;
   opacity: 0;
 
 
@@ -388,7 +391,7 @@ body {
 //   // opacity: 1;
 //   background-color: red;
 // }
-.cell{
+.cell {
 
   display: flex;
   justify-content: center;
@@ -411,6 +414,7 @@ body {
     height: 100%;
     width: 6.25%;
     color: transparent;
+    cursor: pointer;
 
   }
   &:active {

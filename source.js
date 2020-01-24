@@ -3,6 +3,14 @@ const grid = document.querySelector('.grid')
 const counter = document.querySelector('.counter')
 const timer = document.querySelector('.timer')
 
+//counter
+const ones = document.querySelector('#ones')
+const tens = document.querySelector('#tens')
+const hundreds = document.querySelector('#hundreds')
+
+
+
+
 //grid bombs and numbers
 let rows = []
 let cells = []
@@ -12,7 +20,9 @@ let numbers = []
 //flags and correct guesses
 let covered = 0
 let correct = 0
-let flags = 0
+let flags = 100
+
+
 
 
 let playing = false
@@ -293,6 +303,94 @@ function handleCheck(e) {
 }
 
 init()
+
+
+//pad the number such that it is always at least three digits
+function pad(num, size) {
+    var s = num+"";
+    while (s.length < size) s = "0" + s;
+    return s;
+}
+
+//counter function
+
+function count(flags) {
+  flags = pad(flags, 3)
+
+  let hundredDecimal = flags[0]
+  let tensDecimal = flags[1]
+  let onesDecimal = flags[2]
+
+  if(hundredDecimal === '0') {
+    hundreds.className = "digit zero"
+  } else if(hundredDecimal === '1') {
+    hundreds.className = "digit one"
+  } else if(hundredDecimal === '2') {
+    hundreds.className = "digit two"
+  } else if(hundredDecimal === '3') {
+    hundreds.className = "digit three"
+  } else if(hundredDecimal === '4') {
+    hundreds.className = "digit four"
+  } else if(hundredDecimal === '5') {
+    hundreds.className = "digit five"
+  } else if(hundredDecimal === '6') {
+    hundreds.className = "digit six"
+  } else if(hundredDecimal === '7') {
+    hundreds.className = "digit seven"
+  } else if(hundredDecimal === '8') {
+    hundreds.className = "digit eight"
+  } else if(hundredDecimal === '9') {
+    hundreds.className = "digit nine"
+  }
+
+
+  // console.log('hundreds decimal place: ', hundredDecimal)
+    if(tensDecimal === '0') {
+      tens.className = "digit zero"
+    } else if(tensDecimal === '1') {
+      tens.className = "digit one"
+    } else if(tensDecimal === '2') {
+      tens.className = "digit two"
+    } else if(tensDecimal === '3') {
+      tens.className = "digit three"
+    } else if(tensDecimal === '4') {
+      tens.className = "digit four"
+    } else if(tensDecimal === '5') {
+      tens.className = "digit five"
+    } else if(tensDecimal === '6') {
+      tens.className = "digit six"
+    } else if(tensDecimal === '7') {
+      tens.className = "digit seven"
+    } else if(tensDecimal === '8') {
+      tens.className = "digit eight"
+    } else if(tensDecimal === '9') {
+      tens.className = "digit nine"
+    }
+
+    if(onesDecimal === '0') {
+      ones.className = "digit zero"
+    } else if(onesDecimal === '1') {
+      ones.className = "digit one"
+    } else if(onesDecimal === '2') {
+      ones.className = "digit two"
+    } else if(onesDecimal === '3') {
+      ones.className = "digit three"
+    } else if(onesDecimal === '4') {
+      ones.className = "digit four"
+    } else if(onesDecimal === '5') {
+      ones.className = "digit five"
+    } else if(onesDecimal === '6') {
+      ones.className = "digit six"
+    } else if(onesDecimal === '7') {
+      ones.className = "digit seven"
+    } else if(onesDecimal === '8') {
+      ones.className = "digit eight"
+    } else if(onesDecimal === '9') {
+      ones.className = "digit nine"
+    }
+
+  }
+
 
 
 
