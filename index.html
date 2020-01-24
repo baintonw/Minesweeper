@@ -11,304 +11,44 @@
   <body>
     <div class="board">
       <div class="header">
-        <div class="counter">000
+        <div class="counter">
+          <div class="digit zero">
+            <div id="top"></div>
+            <div id="top-right"></div>
+            <div id="bottom-right"></div>
+            <div id="bottom"></div>
+            <div id="bottom-left"></div>
+            <div id="top-left"></div>
+            <div id="middle"></div>
+          </div>
+          <div class="digit zero">
+            <div id="top"></div>
+            <div id="top-right"></div>
+            <div id="bottom-right"></div>
+            <div id="bottom"></div>
+            <div id="bottom-left"></div>
+            <div id="top-left"></div>
+            <div id="middle"></div>
+          </div>
+          <div class="digit zero">
+            <div id="top"></div>
+            <div id="top-right"></div>
+            <div id="bottom-right"></div>
+            <div id="bottom"></div>
+            <div id="bottom-left"></div>
+            <div id="top-left"></div>
+            <div id="middle"></div>
+          </div>
         </div>
           <img id="smiley" src="./public/minesweeper_face_normal.png"/>
         <div class="timer">
         </div>
 
       </div>
+
       <div class="grid">
-        <!-- <div class="row">
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-        </div>
-        <div class="row">
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-        </div>
-        <div class="row">
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-        </div>
-        <div class="row">
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-        </div>
-        <div class="row">
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-        </div>
-        <div class="row">
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-        </div>
-        <div class="row">
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-        </div>
-        <div class="row">
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-        </div>
-        <div class="row">
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-        </div>
-        <div class="row">
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-        </div>
-        <div class="row">
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-        </div>
-        <div class="row">
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-        </div>
-        <div class="row">
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-        </div>
-        <div class="row">
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-        </div>
-        <div class="row">
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-        </div>
-        <div class="row">
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-          <div class="cell covered"></div>
-        </div>
-      </div> -->
-    </div>
+      </div>
+
     <script src="./source.js">
     </script>
   </body>

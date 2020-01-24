@@ -1,19 +1,25 @@
+//board
 const grid = document.querySelector('.grid')
 const counter = document.querySelector('.counter')
 const timer = document.querySelector('.timer')
 
+//grid bombs and numbers
 let rows = []
 let cells = []
 let bombCells = []
 let numbers = []
 
+//flags and correct guesses
 let covered = 0
 let correct = 0
 let flags = 0
 
+
 let playing = false
+//timer
 let seconds = 0
 
+//smiley face : )
 let smiley = document.querySelector('#smiley')
 
 let mouseTarget;
@@ -39,7 +45,7 @@ function init() {
 
   covered = cells.length - bombCells.length
   flags = bombCells.length
-  counter.innerText = flags
+  // counter.innerText = flags
 
   timer.innerText = seconds
 }
@@ -246,7 +252,8 @@ function plantFlag(e, node) {
     if(cell.classList.value === "cell covered flag") {
       cell.classList.remove('flag')
       flags++
-      counter.innerText = flags
+      //flags number in counter
+      // counter.innerText = flags
       if(cell.innerText === 'X') {
         correct--
       }
@@ -254,7 +261,7 @@ function plantFlag(e, node) {
       cell.classList.add('flag')
       flags--
       // flags < 0 ? flags = 0 : null
-      counter.innerText = flags
+      // counter.innerText = flags
       if(cell.innerText === 'X') {
         correct++
         checkWin()

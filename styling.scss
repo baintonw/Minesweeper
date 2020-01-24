@@ -29,7 +29,7 @@ body {
   height: 4rem;
   // left: 45%;
 }
-
+//counter
 .counter {
   background: black;
   border: 2px solid red;
@@ -43,8 +43,303 @@ body {
   color: red;
   font-family: 'Source Sans Pro', sans-serif;
 	// font-size: 250px;
-	opacity: .9;
+	opacity: 1;
+
 }
+
+
+//counter digits
+//counter variables
+$digit-width: 100px;
+$digit-height: 200px;
+
+.digit {
+    position: relative;
+    width: 33.3%;
+    height: 100%;
+    background: #444444;
+
+
+  &.zero > {
+    #top {
+      opacity: 1;
+    }
+    #top-right {
+      opacity: 1;
+    }
+    #bottom-right {
+      opacity: 1;
+    }
+    #bottom {
+      opacity: 1;
+    }
+    #bottom-left {
+      opacity: 1;
+    }
+    #top-left {
+      opacity: 1;
+    }
+  }
+
+  &.one {
+    #top-right {
+      opacity: 1;
+    }
+    #bottom-right {
+      opacity: 1;
+    }
+  }
+
+  &.two {
+    #top {
+      opacity: 1;
+    }
+    #top-right {
+      opacity: 1;
+    }
+    #middle {
+      opacity: 1;
+    }
+    #bottom-left {
+      opacity: 1;
+    }
+    #bottom {
+      opacity: 1;
+    }
+  }
+
+  &.three > {
+    #top {
+      opacity: 1;
+    }
+    #top-right {
+      opacity: 1;
+    }
+    #bottom-right {
+      opacity: 1;
+    }
+    #bottom {
+      opacity: 1;
+    }
+    #middle {
+      opacity: 1;
+    }
+  }
+
+  &.four > {
+    #top-left {
+      opacity: 1;
+    }
+    #top-right {
+      opacity: 1;
+    }
+    #bottom-right {
+      opacity: 1;
+    }
+    #middle {
+      opacity: 1;
+    }
+  }
+
+  &.five > {
+    #top {
+      opacity: 1;
+    }
+    #top-left {
+      opacity: 1;
+    }
+    #middle {
+      opacity: 1;
+    }
+    #bottom-right {
+      opacity: 1;
+    }
+    #bottom {
+      opacity: 1;
+    }
+  }
+  &.six > {
+    #top {
+      opacity: 1;
+    }
+    #top-left {
+      opacity: 1;
+    }
+    #middle {
+      opacity: 1;
+    }
+    #bottom-right {
+      opacity: 1;
+    }
+    #bottom-left {
+      opacity: 1;
+    }
+    #bottom {
+      opacity: 1;
+    }
+  }
+  &.seven {
+    #top {
+      opacity: 1;
+    }
+    #top-right {
+      opacity: 1;
+    }
+    #bottom-right {
+      opacity: 1;
+    }
+  }
+  &.eight > {
+    #top {
+      opacity: 1;
+    }
+    #top-right {
+      opacity: 1;
+    }
+    #bottom-right {
+      opacity: 1;
+    }
+    #bottom {
+      opacity: 1;
+    }
+    #bottom-left {
+      opacity: 1;
+    }
+    #top-left {
+      opacity: 1;
+    }
+    #middle {
+      opacity: 1;
+    }
+  }
+  &.nine {
+    #top {
+      opacity: 1;
+    }
+    #top-left {
+      opacity :1;
+    }
+    #top-right {
+      opacity: 1;
+    }
+    #middle {
+      opacity: 1;
+    }
+    #bottom-right {
+      opacity: 1;
+    }
+  }
+
+}
+
+
+
+
+
+
+
+#top {
+  position: absolute;
+border-top: 4px solid #bada55;
+border-left: 10px solid transparent;
+border-right: 10px solid transparent;
+height: 0;
+width: 29px;
+opacity: 0;
+}
+
+#top-right {
+  position: absolute;
+  top: 24.6%;
+  right: -29.5%;
+  border-top: 4px solid #bada55;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  height: 0;
+  width: 34%;
+  transform: rotate(90deg);
+  opacity: 0;
+}
+
+#bottom-right {
+      position: absolute;
+      bottom: 20%;
+      right: -30.5%;
+      border-top: 4px solid #bada55;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      height: 0;
+      width: 34%;
+      transform: rotate(90deg);
+      opacity: 0;
+}
+
+#bottom {
+    position: absolute;
+    bottom: 0px;
+    border-bottom: 4px solid #bada55;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    height: 0;
+    width: 50%;
+    right: 0;
+    opacity: 0;
+}
+
+#bottom-left {
+    position: absolute;
+    top: 75.6%;
+    left: -25%;
+    border-bottom: 4px solid #bada55;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    height: 0;
+    width: 34%;
+    transform: rotate(90deg);
+    opacity: 0;
+
+}
+
+#top-left {
+
+  position: absolute;
+      top: 25.6%;
+      left: -25%;
+      border-bottom: 4px solid #bada55;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      height: 0;
+      width: 40%;
+      transform: rotate(90deg);
+      opacity: 0;
+
+
+}
+
+#middle {
+  position: absolute;
+  top: 50%;
+  border-bottom: 8px solid #bada55;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  height: 0;
+  width: 60px;
+  opacity: 0;
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 .timer {
   background: black;
@@ -115,7 +410,7 @@ body {
     border-width: 2px 0 0 2px;
     height: 100%;
     width: 6.25%;
-    // color: transparent;
+    color: transparent;
 
   }
   &:active {
