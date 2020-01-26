@@ -8,6 +8,12 @@ const ones = document.querySelector('#ones')
 const tens = document.querySelector('#tens')
 const hundreds = document.querySelector('#hundreds')
 
+//timer
+const timerSeconds = document.querySelector('#seconds')
+const timerTens = document.querySelector('#tens-seconds')
+const timerMinutes = document.querySelector('#minutes')
+
+
 
 
 
@@ -35,15 +41,17 @@ let smiley = document.querySelector('#smiley')
 let mouseTarget;
 
 function reset() {
-  stop()
-  grid.innerHTML = ''
-  rows = []
-  cells = []
-  bombCells = []
-  numbers = []
-  openCells = []
-  correct = 0
-  i = 0
+  console.log('reset!')
+  playing = false;
+  stop();
+  grid.innerHTML = '';
+  rows = [];
+  cells = [];
+  bombCells = [];
+  numbers = [];
+  openCells = [];
+  correct = 0;
+  i = 0;
 
 }
 
@@ -55,20 +63,21 @@ function init() {
 
   covered = cells.length - bombCells.length
   flags = bombCells.length
-  // counter.innerText = flags
-
-  timer.innerText = seconds
+  count(flags)
+  time(seconds)
 }
 
 let start;
 
 function timeElapsed() {
   seconds++
-  timer.innerText = seconds
+  time(seconds)
 }
 
 function stop() {
+  seconds = 0;
   clearInterval(start)
+
 }
 
 
@@ -315,6 +324,7 @@ function pad(num, size) {
 //counter function
 
 function count(flags) {
+  flags > 999 ? flags = 999 : null
   flags = pad(flags, 3)
 
   let hundredDecimal = flags[0]
@@ -322,25 +332,25 @@ function count(flags) {
   let onesDecimal = flags[2]
 
   if(hundredDecimal === '0') {
-    hundreds.className = "digit zero"
+    timerMinutes.className = "digit zero"
   } else if(hundredDecimal === '1') {
-    hundreds.className = "digit one"
+    timerMinutes.className = "digit one"
   } else if(hundredDecimal === '2') {
-    hundreds.className = "digit two"
+    timerMinutes.className = "digit two"
   } else if(hundredDecimal === '3') {
-    hundreds.className = "digit three"
+    timerMinutes.className = "digit three"
   } else if(hundredDecimal === '4') {
-    hundreds.className = "digit four"
+    timerMinutes.className = "digit four"
   } else if(hundredDecimal === '5') {
-    hundreds.className = "digit five"
+    timerMinutes.className = "digit five"
   } else if(hundredDecimal === '6') {
-    hundreds.className = "digit six"
+    timerMinutes.className = "digit six"
   } else if(hundredDecimal === '7') {
-    hundreds.className = "digit seven"
+    timerMinutes.className = "digit seven"
   } else if(hundredDecimal === '8') {
-    hundreds.className = "digit eight"
+    timerMinutes.className = "digit eight"
   } else if(hundredDecimal === '9') {
-    hundreds.className = "digit nine"
+    timerMinutes.className = "digit nine"
   }
 
 
@@ -391,6 +401,83 @@ function count(flags) {
 
   }
 
+  function time(seconds) {
+    seconds > 999 ? seconds = 999 : null
+    seconds = pad(seconds, 3)
+    console.log(seconds)
+
+    let hundredDecimal = seconds[0]
+    let tensDecimal = seconds[1]
+    let onesDecimal = seconds[2]
+
+    if(hundredDecimal === '0') {
+      minutes.className = "digit zero"
+    } else if(hundredDecimal === '1') {
+      minutes.className = "digit one"
+    } else if(hundredDecimal === '2') {
+      minutes.className = "digit two"
+    } else if(hundredDecimal === '3') {
+      minutes.className = "digit three"
+    } else if(hundredDecimal === '4') {
+      minutes.className = "digit four"
+    } else if(hundredDecimal === '5') {
+      minutes.className = "digit five"
+    } else if(hundredDecimal === '6') {
+      minutes.className = "digit six"
+    } else if(hundredDecimal === '7') {
+      minutes.className = "digit seven"
+    } else if(hundredDecimal === '8') {
+      minutes.className = "digit eight"
+    } else if(hundredDecimal === '9') {
+      minutes.className = "digit nine"
+    }
+
+
+    // console.log('hundreds decimal place: ', hundredDecimal)
+      if(tensDecimal === '0') {
+        timerTens.className = "digit zero"
+      } else if(tensDecimal === '1') {
+        timerTens.className = "digit one"
+      } else if(tensDecimal === '2') {
+        timerTens.className = "digit two"
+      } else if(tensDecimal === '3') {
+        timerTens.className = "digit three"
+      } else if(tensDecimal === '4') {
+        timerTens.className = "digit four"
+      } else if(tensDecimal === '5') {
+        timerTens.className = "digit five"
+      } else if(tensDecimal === '6') {
+        timerTens.className = "digit six"
+      } else if(tensDecimal === '7') {
+        timerTens.className = "digit seven"
+      } else if(tensDecimal === '8') {
+        timerTens.className = "digit eight"
+      } else if(tensDecimal === '9') {
+        timerTens.className = "digit nine"
+      }
+
+      if(onesDecimal === '0') {
+        timerSeconds.className = "digit zero"
+      } else if(onesDecimal === '1') {
+        timerSeconds.className = "digit one"
+      } else if(onesDecimal === '2') {
+        timerSeconds.className = "digit two"
+      } else if(onesDecimal === '3') {
+        timerSeconds.className = "digit three"
+      } else if(onesDecimal === '4') {
+        timerSeconds.className = "digit four"
+      } else if(onesDecimal === '5') {
+        timerSeconds.className = "digit five"
+      } else if(onesDecimal === '6') {
+        timerSeconds.className = "digit six"
+      } else if(onesDecimal === '7') {
+        timerSeconds.className = "digit seven"
+      } else if(onesDecimal === '8') {
+        timerSeconds.className = "digit eight"
+      } else if(onesDecimal === '9') {
+        timerSeconds.className = "digit nine"
+      }
+  }
 
 
 
