@@ -179,8 +179,6 @@ function reveal(node) {
   //If the cell is empty, then break
   if(empty) return;
   if([...node.classList].includes('flag')) return
-
-
   // if node is flagged
 
   //Uncover the cell
@@ -212,35 +210,54 @@ function reveal(node) {
   }
 }
 
+//check if cells are bombs or flags
+
 function check(node) {
-  // console.log('checking!')
+  console.log('check one two')
   let neighbors = findAdjacent(node)
-  console.log('neighbors: ', neighbors)
-  // neighbors = neighbors.filter(neighbor => neighbor !== node && neighbor.classList.value !== "cell")
-  neighbors = neighbors.filter(neighbor => !!neighbor)
-  console.log('neighbors after filter: ', neighbors)
-  neighbors.forEach(neighbor => {
-    if(neighbor.innerText === 'X' && !([...neighbor.classList].includes('flag'))) {
-      console.log('Boom', neighbor)
-      gameOver()
-    } else if([...neighbor.classList].includes('flag')){
-      return
-    } else {
+    neighbors = neighbors.filter(neighbor => !!neighbor)
 
-      neighbor.dataset.number === "1" ? neighbor.style = "color: blue" : null
-      neighbor.dataset.number === "2" ? neighbor.style = "color: darkorange" : null
-      neighbor.dataset.number === "3" ? neighbor.style = "color: red" : null
-      neighbor.dataset.number === "4" ? neighbor.style = "color: maroon" : null
-      neighbor.dataset.number === "5" ? neighbor.style = "color: green" : null
 
-      // neighbor.classList.remove('covered')
-      reveal(neighbor)
+    for(let i = 0; i < neighbors.length; i++) {
+      
+      //if neighboring cell is a flag
+      if([...neighbors[i].classList].includes('flag')) {
+        (neighbors[i].innerText !== 'X') ? gameOver() : null
+        console.log('flag: ', neighbors[i])
+
+
+      }
 
     }
-  })
-  console.log(neighbors)
-  checkWin()
+]    return
+    // reveal(neighbors[i])
 }
+
+// function check(node) {
+//   let neighbors = findAdjacent(node)
+//   neighbors = neighbors.filter(neighbor => !!neighbor)
+//
+//   neighbors.forEach(neighbor => {
+//     //if neighbor doesn't have a flag adjacent
+//     if(neighbor.innerText === 'X' && !([...neighbor.classList].includes('flag'))) {
+//       console.log('Boom', neighbor)
+//       gameOver()
+//       // return
+//     } else if(neighbor.innerText === 'X' && [...neighbor.classList].includes('flag')){
+//       return
+//     } else {
+//
+//       neighbor.dataset.number === "1" ? neighbor.style = "color: blue" : null
+//       neighbor.dataset.number === "2" ? neighbor.style = "color: darkorange" : null
+//       neighbor.dataset.number === "3" ? neighbor.style = "color: red" : null
+//       neighbor.dataset.number === "4" ? neighbor.style = "color: maroon" : null
+//       neighbor.dataset.number === "5" ? neighbor.style = "color: green" : null
+//       reveal(neighbor)
+//     }
+//   })
+//   console.log(neighbors)
+//   checkWin()
+// }
 
 function handleClick(e){
   if(e.target.classList.value === "cell covered" || e.target.classList.value === "cell") {
@@ -257,7 +274,7 @@ function handleClick(e){
 }
 
 function plantFlag(e, node) {
-    console.log('Which event is this? ', e, 'which node is this ', node)
+    // console.log('Which event is this? ', e, 'which node is this ', node)
     let cell;
     if(!node) {
       e.preventDefault()
@@ -300,9 +317,7 @@ function checkWin() {
 }
 
 function handleCheck(e) {
-  // console.log("e.code: ", e.code, "e.target: ", e.target, "mouseTarget: ", mouseTarget)
   if(e.code === "Space") {
-      // console.log(mouseTarget)
       if(mouseTarget.classList.value === "cell covered" || mouseTarget.classList.value === "cell covered flag") {
         plantFlag(e, mouseTarget)
       } else if(mouseTarget.classList.value === "cell") {
@@ -404,7 +419,7 @@ function count(flags) {
   function time(seconds) {
     seconds > 999 ? seconds = 999 : null
     seconds = pad(seconds, 3)
-    console.log(seconds)
+    // console.log(seconds)
 
     let hundredDecimal = seconds[0]
     let tensDecimal = seconds[1]
