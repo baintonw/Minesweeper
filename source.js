@@ -232,8 +232,11 @@ function reveal(node) {
 function check(node) {
   let neighbors = findAdjacent(node)
   neighbors = neighbors.filter(neighbor => !!neighbor)
+  console.log(node.innerText)
   let hasFlags = neighbors.filter(neighbor => [...neighbor.classList].includes('flag'))
   if(hasFlags.length === 0) return;
+  if(parseInt(node.innerText) !== hasFlags.length) return;
+
   console.log('flags: ', hasFlags)
   neighbors.forEach(neighbor => {
     //if neighbor doesn't have a flag adjacent
