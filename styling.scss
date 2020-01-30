@@ -254,7 +254,8 @@ $digitHeight: $headerHeight * .8;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
   height: 0;
-  width: $digitWidth / 2;
+  width: $digitWidth / 2.7;
+  left: 5%;
   opacity: 0;
 }
 
@@ -266,7 +267,7 @@ $digitHeight: $headerHeight * .8;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
   height: 0;
-  width: 34%;
+  width: $digitWidth / 5.2;
   transform: rotate(90deg);
   opacity: 0;
 }
@@ -275,11 +276,11 @@ $digitHeight: $headerHeight * .8;
       position: absolute;
       bottom: 20%;
       right: -30.5%;
-      border-top: 4px solid #bada55;
-      border-left: 10px solid transparent;
-      border-right: 10px solid transparent;
+      border-top: 3px solid #bada55;
+      border-left: 9px solid transparent;
+      border-right: 9px solid transparent;
       height: 0;
-      width: 34%;
+      width: $digitWidth / 5.2;
       transform: rotate(90deg);
       opacity: 0;
 }

@@ -26,7 +26,7 @@ let numbers = []
 //flags and correct guesses
 let covered = 0
 let correct = 0
-let flags = 100
+let flags = 40
 
 
 
@@ -62,7 +62,6 @@ function init() {
   placeNumbers(bombCells);
 
   covered = cells.length - bombCells.length
-  flags = bombCells.length
   count(flags)
   time(seconds)
 }
@@ -112,13 +111,10 @@ function placeBombs(cells) {
   while (i < 40) {
     let randomI = (Math.floor(Math.random() * 256))
     cell = cells[randomI]
-    // console.log('INDIVIDUAL CELLS', cell)
 
     if(cell.innerText !== 'X'){
-      // console.log(cell)
       cell.innerText = 'X'
       i++
-      // console.log(i)
     }
 
     bombCells = cells.filter(cell => cell.innerText === 'X')
@@ -142,15 +138,12 @@ function findAdjacent(cell) {
 function placeNumbers(bombCells) {
   bombCells.forEach(bomb => {
     let adjacent = findAdjacent(bomb)
-    // console.log('ADJ IN NUMBERS', adjacent)
     let notBombs = adjacent.filter(cell => cell !== null && cell.innerText !== 'X')
     numbers.push(notBombs)
   })
   numbers = numbers.flat()
   for(let i = 0; i < numbers.length; i++) {
-    // console.log(numbers[i].id)
     numbers[i].dataset.number++
-    // console.log(numbers[i])
   }
   numbers.forEach(cell => {
     if(cell.dataset.number > 0) {
@@ -158,7 +151,6 @@ function placeNumbers(bombCells) {
     }
   })
 
-  // console.log(numbers)
 }
 
 function gameOver() {
@@ -212,32 +204,13 @@ function reveal(node) {
 
 //check if cells are bombs or flags
 
-// function check(node) {
-//   console.log('check one two')
-//   let neighbors = findAdjacent(node)
-//     neighbors = neighbors.filter(neighbor => !!neighbor)
-//
-//
-//     let hasFlags = [];
-//     for(let i = 0; i < neighbors.length; i++) {
-//       //if neighboring cell is a flag
-//       if(neighbors[i].classList.value === 'cell covered flags') {
-//         console.log('flagged neighbor: ', neighbors[i])
-//
-//       }
-//     }
-//     return
-// }
-
 function check(node) {
   let neighbors = findAdjacent(node)
   neighbors = neighbors.filter(neighbor => !!neighbor)
-  console.log(node.innerText)
   let hasFlags = neighbors.filter(neighbor => [...neighbor.classList].includes('flag'))
   if(hasFlags.length === 0) return;
   if(parseInt(node.innerText) !== hasFlags.length) return;
 
-  console.log('flags: ', hasFlags)
   neighbors.forEach(neighbor => {
     //if neighbor doesn't have a flag adjacent
     if(neighbor.innerText === 'X' && [...neighbor.classList].includes('flag')){
@@ -257,7 +230,6 @@ function check(node) {
 
 function handleClick(e){
   if(e.target.classList.value === "cell covered" || e.target.classList.value === "cell") {
-    // console.log('you have clicked a covered cell')
     let cell = e.target
     if(playing === false) {
       playing = true
@@ -276,24 +248,25 @@ function plantFlag(e, node) {
       e.preventDefault()
       cell = e.target
     } else if(node) {
-      // console.log('is node!')
       cell = node
     }
 
-    console.log(cell)
+
     if(cell.classList.value === "cell covered flag") {
       cell.classList.remove('flag')
       flags++
-      //flags number in counter
-      // counter.innerText = flags
+      count(flags)
       if(cell.innerText === 'X') {
         correct--
       }
     } else if(cell.classList.value === "cell covered") {
+      if(flags < 1) return;
+
       cell.classList.add('flag')
       flags--
-      // flags < 0 ? flags = 0 : null
-      // counter.innerText = flags
+      flags < 0 ? flags = 0 : null
+
+      count(flags)
       if(cell.innerText === 'X') {
         correct++
         checkWin()
