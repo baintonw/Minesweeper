@@ -250,62 +250,63 @@ $digitHeight: $headerHeight * .8;
 
 .top {
   position: absolute;
-  border-top: 4px solid #bada55;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
+  border-top: 2px solid #bada55;
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
   height: 0;
-  width: $digitWidth / 2.7;
-  left: 5%;
+  width: $digitWidth / 3.0;
+  left: 12%;
   opacity: 0;
 }
 
 .top-right {
   position: absolute;
-  top: 24.6%;
-  right: -29.5%;
-  border-top: 4px solid #bada55;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
+  top: 23.3%;
+  right: -17%;
+  border-top: 3px solid #bada55;
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
   height: 0;
-  width: $digitWidth / 5.2;
+  width: $digitWidth / 7.2;
   transform: rotate(90deg);
   opacity: 0;
 }
 
 .bottom-right {
-      position: absolute;
-      bottom: 20%;
-      right: -30.5%;
-      border-top: 3px solid #bada55;
-      border-left: 9px solid transparent;
-      border-right: 9px solid transparent;
-      height: 0;
-      width: $digitWidth / 5.2;
-      transform: rotate(90deg);
-      opacity: 0;
+  position: absolute;
+  bottom: 20%;
+  right: -17%;
+  border-top: 3px solid #bada55;
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+  height: 0;
+  width: $digitWidth / 7.2;
+  transform: rotate(90deg);
+  opacity: 0;
 }
 
 .bottom {
     position: absolute;
     bottom: 0px;
-    border-bottom: 4px solid #bada55;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
+    border-bottom: 2px solid #bada55;
+    border-left: 9px solid transparent;
+    border-right: 9px solid transparent;
     height: 0;
-    width: 50%;
+    width: $digitWidth / 3.1;
+    left: 10%;
     right: 0;
     opacity: 0;
 }
 
 .bottom-left {
     position: absolute;
-    top: 75.6%;
-    left: -27%;
-    border-bottom: 4px solid #bada55;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
+    top: 73.6%;
+    left: -16%;
+    border-bottom: 3px solid #bada55;
+    border-left: 9px solid transparent;
+    border-right: 9px solid transparent;
     height: 0;
-    width: 34%;
+    width: $digitWidth / 7.2;
     transform: rotate(90deg);
     opacity: 0;
 
@@ -314,13 +315,13 @@ $digitHeight: $headerHeight * .8;
 .top-left {
 
   position: absolute;
-  top: 25.6%;
-  left: -32%;
-  border-bottom: 4px solid #bada55;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
+  top: 23.6%;
+  left: -16%;
+  border-bottom: 3px solid #bada55;
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
   height: 0;
-  width: 40%;
+  width: $digitWidth / 7.2;
   transform: rotate(90deg);
   opacity: 0;
 
@@ -330,11 +331,12 @@ $digitHeight: $headerHeight * .8;
 .middle {
   position: absolute;
   top: 50%;
-  border-bottom: 4px solid #bada55;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
+  border-bottom: 2px solid #bada55;
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
   height: 0;
-  width: 26px;
+  width: $digitWidth / 3.1;
+  left: 10%;
   opacity: 0;
 
 
