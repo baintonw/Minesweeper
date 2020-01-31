@@ -14,6 +14,8 @@ $boardWidth: 50vw * .8;
     // left: 22%;
     position: absolute;
     padding: 4%;
+
+    box-shadow: 0px 2px 4px 1px;
 }
 
 //header variable
@@ -36,14 +38,13 @@ $rem: 1rem;
   border: 1px solid black;
   height: $boardHeight / 10;
   width: $boardWidth / 9;
-  // left: 45%;
 }
+
 //counter
 $counterWidth: $boardWidth / 5;
 .counter {
   background: black;
-  padding: 3px;
-  // border: 2px solid red;
+  padding: 2px;
   position: absolute;
 
   left: 0%;
@@ -54,6 +55,9 @@ $counterWidth: $boardWidth / 5;
   flex-direction: row-reverse;
   justify-content: center;
   opacity: 1;
+
+  box-shadow: 0px 1px 2px 2px inset;
+
 
 }
 
@@ -356,7 +360,7 @@ $digitHeight: $headerHeight * .8;
 
 .timer {
   background: black;
-  padding: 3px;
+  padding: 2px;
 
   // border: 2px solid magenta;
   position: absolute;
@@ -388,6 +392,9 @@ $gridHeight: $boardHeight * .85;
     width: $boardWidth;
     height: $gridHeight;
     overflow: hidden;
+
+    box-shadow: 0px 1px 4px 0px;
+
 }
 
 .row {
@@ -418,10 +425,11 @@ $gridHeight: $boardHeight * .85;
   &.covered {
     position: relative;
     background: #c0c0c0;
-    border: 3px outset #ececec;
-    opacity: 1;
-    // border-style: outset;
+    border: 2px #ececec;
+    border-style: outset;
     border-width: 2px 0 0 2px;
+
+    opacity: 1;
     height: 100%;
     width: 6.25%;
     color: transparent;
