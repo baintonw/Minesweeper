@@ -1,3 +1,16 @@
+* {
+   -moz-user-select: -moz-none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+
+   /*
+     Introduced in IE 10.
+     See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+   */
+   -ms-user-select: none;
+   user-select: none;
+}
+
 body {
   font-size: 20px;
 }
@@ -425,7 +438,7 @@ $gridHeight: $boardHeight * .85;
   &.covered {
     position: relative;
     background: #c0c0c0;
-    border: 2px #ececec;
+    border: 2px #ededed;
     border-style: outset;
     border-width: 2px 0 0 2px;
 

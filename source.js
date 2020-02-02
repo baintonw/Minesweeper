@@ -52,6 +52,7 @@ function reset() {
   openCells = [];
   correct = 0;
   i = 0;
+  flags = 40;
 
 }
 
