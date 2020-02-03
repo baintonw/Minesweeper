@@ -21,7 +21,7 @@ $boardWidth: 50vw * .8;
 
 .board {
     font-size: 20px;
-    border: 2px solid black;
+    border: 1em outset #CCC;
     height: $boardHeight;
     width: $boardWidth;
     // left: 22%;
@@ -47,15 +47,21 @@ $headerHeight: ($boardHeight / 9);
 //smiley variables
 $rem: 1rem;
 #smiley {
+  border: .2em outset;
+
   position: relative;
-  border: 1px solid black;
   height: $boardHeight / 10;
   width: $boardWidth / 9;
+
+  &.inset {
+    border: .2em inset;
+  }
 }
 
 //counter
 $counterWidth: $boardWidth / 5;
 .counter {
+  border: .4em inset;
   background: black;
   padding: 2px;
   position: absolute;
@@ -372,6 +378,8 @@ $digitHeight: $headerHeight * .8;
 
 
 .timer {
+  border: .4em inset;
+
   background: black;
   padding: 2px;
 
@@ -398,7 +406,7 @@ body {
 $gridWidth: $boardWidth;
 $gridHeight: $boardHeight * .85;
 .grid {
-    border: 4px solid black;
+    border: .4em outset #CCC;
     position: relative;
     top: 5%;
     left: 0%;
@@ -438,7 +446,7 @@ $gridHeight: $boardHeight * .85;
   &.covered {
     position: relative;
     background: #c0c0c0;
-    border: 2px #ededed;
+    border-color: #ebebed;
     border-style: outset;
     border-width: 2px 0 0 2px;
 

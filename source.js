@@ -482,3 +482,10 @@ document.addEventListener('mouseover', function(e) {
 document.addEventListener('keydown', handleCheck)
 
 smiley.addEventListener('click', init)
+smiley.addEventListener('mousedown', (e) => {
+  smiley.className = "inset"
+})
+
+smiley.addEventListener('mouseup', (e) => {
+  smiley.className = ""
+})
