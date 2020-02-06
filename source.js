@@ -484,8 +484,11 @@ document.addEventListener('keydown', handleCheck)
 smiley.addEventListener('click', init)
 smiley.addEventListener('mousedown', (e) => {
   smiley.className = "inset"
+  smiley.src = "./public/ah face smiley.png"
 })
 
 smiley.addEventListener('mouseup', (e) => {
   smiley.className = ""
+  smiley.src = "./public/minesweeper_face_normal.png"
+
 })
