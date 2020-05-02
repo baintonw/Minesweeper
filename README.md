@@ -1,1 +1,2 @@
 # Minesweeper
+Welcome to MySweeper!

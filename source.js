@@ -230,7 +230,9 @@ function check(node) {
 }
 
 function handleClick(e){
+  
   if(e.target.classList.value === "cell covered" || e.target.classList.value === "cell") {
+    
     let cell = e.target
     if(playing === false) {
       playing = true
@@ -279,7 +281,7 @@ function plantFlag(e, node) {
 
 function checkWin() {
   if(correct === bombCells.length && covered === 0) {
-    alert('Yay! You Win!')
+    alert('Congratulations! You Win!')
     playing = false
     stop()
     smiley.src = "./public/minesweeper faces cool.png"
