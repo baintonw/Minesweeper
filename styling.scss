@@ -271,7 +271,7 @@ $digitHeight: $headerHeight * .8;
 
 
 
-
+//digit components
 .top {
   position: absolute;
   border-top: 2px solid #bada55;
@@ -464,7 +464,10 @@ $gridHeight: $boardHeight * .85;
     width: 5.7%;
   }
   &.flag {
-    background-color: red;
+    // background-color: inherit;
+    background-image: url(public/flag.png);
+    background-size: cover;
+
   }
   cursor: pointer;
 }
