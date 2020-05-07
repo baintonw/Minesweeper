@@ -113,12 +113,12 @@ function placeBombs(cells) {
     let randomI = (Math.floor(Math.random() * 256))
     cell = cells[randomI]
 
-    if(cell.innerText !== 'X'){
-      cell.innerText = 'X'
+    if(cell.innerText !== '💣'){
+      cell.innerText = '💣'
       i++
     }
 
-    bombCells = cells.filter(cell => cell.innerText === 'X')
+    bombCells = cells.filter(cell => cell.innerText === '💣')
   }
 }
 
@@ -139,7 +139,7 @@ function findAdjacent(cell) {
 function placeNumbers(bombCells) {
   bombCells.forEach(bomb => {
     let adjacent = findAdjacent(bomb)
-    let notBombs = adjacent.filter(cell => cell !== null && cell.innerText !== 'X')
+    let notBombs = adjacent.filter(cell => cell !== null && cell.innerText !== '💣')
     numbers.push(notBombs)
   })
   numbers = numbers.flat()
@@ -179,7 +179,7 @@ function reveal(node) {
   covered--
   let nodeNumber = parseInt(node.dataset.number)
   //If the cell is a bomb, then end the game
-  if(node.innerText === 'X') {
+  if(node.innerText === '💣') {
     gameOver()
     //if the cell is numbered, then break
   } else if(nodeNumber > 0) {
@@ -214,7 +214,7 @@ function check(node) {
 
   neighbors.forEach(neighbor => {
     //if neighbor doesn't have a flag adjacent
-    if(neighbor.innerText === 'X' && [...neighbor.classList].includes('flag')){
+    if(neighbor.innerText === '💣' && [...neighbor.classList].includes('flag')){
       return
     } else {
 
@@ -259,7 +259,7 @@ function plantFlag(e, node) {
       cell.classList.remove('flag')
       flags++
       count(flags)
-      if(cell.innerText === 'X') {
+      if(cell.innerText === '💣') {
         correct--
       }
     } else if(cell.classList.value === "cell covered") {
@@ -270,7 +270,7 @@ function plantFlag(e, node) {
       flags < 0 ? flags = 0 : null
 
       count(flags)
-      if(cell.innerText === 'X') {
+      if(cell.innerText === '💣') {
         correct++
         checkWin()
       }
