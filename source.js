@@ -110,7 +110,7 @@ function placeBombs(cells) {
   // console.log('this is a cell: ', cells[randomI], 'this is its index: ', cells.indexOf(cells[randomI]))
   let i = 0
   while (i < 40) {
-    let randomI = (Math.floor(Math.random() * 256))
+    let randomI = (Math.floor(Math.rasndom() * 256))
     cell = cells[randomI]
 
     if(cell.innerText !== '💣'){
