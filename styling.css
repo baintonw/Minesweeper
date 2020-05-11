@@ -10,18 +10,17 @@
   user-select: none;
 }
 
-body {
-  font-size: 20px;
+html {
+  font-size: 10px;
 }
 
 .board {
-  font-size: 20px;
-  border: 1em outset #CCC;
+  border: 2rem outset #CCC;
   height: 72vh;
   width: 40vw;
   position: absolute;
   padding: 4%;
-  box-shadow: 0px 2px 4px 1px;
+  box-shadow: 0 .2rem .4rem .1rem;
 }
 
 .header {
@@ -34,20 +33,20 @@ body {
 }
 
 #smiley {
-  border: .2em outset;
+  border: .4rem outset;
   position: relative;
   height: 7.2vh;
   width: 4.44444vw;
 }
 
 #smiley.inset {
-  border: .2em inset;
+  border: .4rem inset;
 }
 
 .counter {
-  border: .4em inset;
+  border: .6rem inset;
   background: black;
-  padding: 2px;
+  padding: .2rem;
   position: absolute;
   left: 0%;
   height: 6.4vh;
@@ -56,7 +55,7 @@ body {
   flex-direction: row-reverse;
   justify-content: center;
   opacity: 1;
-  box-shadow: 0px 1px 2px 2px inset;
+  box-shadow: 0 .1rem .2rem .2rem inset;
 }
 
 .digit {
@@ -260,9 +259,9 @@ body {
 
 .top {
   position: absolute;
-  border-top: 2px solid #bada55;
-  border-left: 9px solid transparent;
-  border-right: 9px solid transparent;
+  border-top: .2rem solid #bada55;
+  border-left: .9rem solid transparent;
+  border-right: .9rem solid transparent;
   height: 0;
   width: 0.88889vw;
   left: 12%;
@@ -272,10 +271,10 @@ body {
 .top-right {
   position: absolute;
   top: 23.3%;
-  right: -17%;
-  border-top: 3px solid #bada55;
-  border-left: 9px solid transparent;
-  border-right: 9px solid transparent;
+  left: 55%;
+  border-top: .3rem solid #bada55;
+  border-left: .9rem solid transparent;
+  border-right: .9rem solid transparent;
   height: 0;
   width: 0.37037vw;
   transform: rotate(90deg);
@@ -285,10 +284,10 @@ body {
 .bottom-right {
   position: absolute;
   bottom: 20%;
-  right: -17%;
-  border-top: 3px solid #bada55;
-  border-left: 9px solid transparent;
-  border-right: 9px solid transparent;
+  left: 55%;
+  border-top: .3rem solid #bada55;
+  border-left: .9rem solid transparent;
+  border-right: .9rem solid transparent;
   height: 0;
   width: 0.37037vw;
   transform: rotate(90deg);
@@ -297,10 +296,10 @@ body {
 
 .bottom {
   position: absolute;
-  bottom: 0px;
-  border-bottom: 2px solid #bada55;
-  border-left: 9px solid transparent;
-  border-right: 9px solid transparent;
+  bottom: 0;
+  border-bottom: .2rem solid #bada55;
+  border-left: .9rem solid transparent;
+  border-right: .9rem solid transparent;
   height: 0;
   width: 0.86022vw;
   left: 10%;
@@ -312,9 +311,9 @@ body {
   position: absolute;
   top: 73.6%;
   left: -16%;
-  border-bottom: 3px solid #bada55;
-  border-left: 9px solid transparent;
-  border-right: 9px solid transparent;
+  border-bottom: .3rem solid #bada55;
+  border-left: .9rem solid transparent;
+  border-right: .9rem solid transparent;
   height: 0;
   width: 0.37037vw;
   transform: rotate(90deg);
@@ -325,9 +324,9 @@ body {
   position: absolute;
   top: 23.6%;
   left: -16%;
-  border-bottom: 3px solid #bada55;
-  border-left: 9px solid transparent;
-  border-right: 9px solid transparent;
+  border-bottom: .3rem solid #bada55;
+  border-left: .9rem solid transparent;
+  border-right: .9rem solid transparent;
   height: 0;
   width: 0.37037vw;
   transform: rotate(90deg);
@@ -337,9 +336,9 @@ body {
 .middle {
   position: absolute;
   top: 50%;
-  border-bottom: 2px solid #bada55;
-  border-left: 9px solid transparent;
-  border-right: 9px solid transparent;
+  border-bottom: .2rem solid #bada55;
+  border-left: .9rem solid transparent;
+  border-right: .9rem solid transparent;
   height: 0;
   width: 0.86022vw;
   left: 10%;
@@ -347,9 +346,9 @@ body {
 }
 
 .timer {
-  border: .4em inset;
+  border: .6rem inset;
   background: black;
-  padding: 2px;
+  padding: .2rem;
   position: absolute;
   width: 20%;
   height: 80%;
@@ -368,14 +367,14 @@ body {
 }
 
 .grid {
-  border: .4em outset #CCC;
+  border: .4rem outset #CCC;
   position: relative;
   top: 5%;
   left: 0%;
   width: 40vw;
   height: 61.2vh;
   overflow: hidden;
-  box-shadow: 0px 1px 4px 0px;
+  box-shadow: 0 .1rem .4rem 0;
 }
 
 .row {
@@ -390,8 +389,8 @@ body {
   justify-content: center;
   align-items: center;
   background: #c0c0c0;
-  border: 1px solid black;
-  border-width: 2px 0 0 2px;
+  border: .1rem solid black;
+  border-width: .2rem 0 0 .2rem;
   height: 100%;
   width: 6.25%;
   cursor: pointer;
@@ -402,7 +401,7 @@ body {
   background: #c0c0c0;
   border-color: #ebebed;
   border-style: outset;
-  border-width: 2px 0 0 2px;
+  border-width: .2rem 0 0 .2rem;
   opacity: 1;
   height: 100%;
   width: 6.25%;

@@ -11,8 +11,12 @@
    user-select: none;
 }
 
+html {
+  font-size: 10px;
+  
+}
+
 body {
-  font-size: 20px;
 }
 
 //variables
@@ -20,21 +24,21 @@ $boardHeight: 90vh * .8;
 $boardWidth: 50vw * .8;
 
 .board {
-    font-size: 20px;
-    border: 1em outset #CCC;
+    border: 2rem outset #CCC;
     height: $boardHeight;
     width: $boardWidth;
     // left: 22%;
     position: absolute;
     padding: 4%;
+    box-shadow: 0 .2rem .4rem .1rem;
 
-    box-shadow: 0px 2px 4px 1px;
 }
 
 //header variable
 $headerHeight: ($boardHeight / 9);
+
 .header {
-  // border: 2px solid blue;
+  
   position: relative;
   display: flex;
   justify-content: center;
@@ -47,14 +51,14 @@ $headerHeight: ($boardHeight / 9);
 //smiley variables
 $rem: 1rem;
 #smiley {
-  border: .2em outset;
+  border: .4rem outset;
 
   position: relative;
   height: $boardHeight / 10;
   width: $boardWidth / 9;
 
   &.inset {
-    border: .2em inset;
+    border: .4rem inset;
 
   }
 }
@@ -62,9 +66,9 @@ $rem: 1rem;
 //counter
 $counterWidth: $boardWidth / 5;
 .counter {
-  border: .4em inset;
+  border: .6rem inset;
   background: black;
-  padding: 2px;
+  padding: .2rem;
   position: absolute;
 
   left: 0%;
@@ -76,7 +80,7 @@ $counterWidth: $boardWidth / 5;
   justify-content: center;
   opacity: 1;
 
-  box-shadow: 0px 1px 2px 2px inset;
+  box-shadow: 0 .1rem .2rem .2rem inset;
 
 
 }
@@ -274,22 +278,23 @@ $digitHeight: $headerHeight * .8;
 //digit components
 .top {
   position: absolute;
-  border-top: 2px solid #bada55;
-  border-left: 9px solid transparent;
-  border-right: 9px solid transparent;
+  border-top: .2rem solid #bada55;
+  border-left: .9rem solid transparent;
+  border-right: .9rem solid transparent;
   height: 0;
   width: $digitWidth / 3.0;
   left: 12%;
   opacity: 0;
 }
-
+// top-right and bottom right are acting up - need to be moved right
 .top-right {
   position: absolute;
   top: 23.3%;
-  right: -17%;
-  border-top: 3px solid #bada55;
-  border-left: 9px solid transparent;
-  border-right: 9px solid transparent;
+  // right: -17%;
+  left: 55%;
+  border-top: .3rem solid #bada55;
+  border-left: .9rem solid transparent;
+  border-right: .9rem solid transparent;
   height: 0;
   width: $digitWidth / 7.2;
   transform: rotate(90deg);
@@ -299,10 +304,11 @@ $digitHeight: $headerHeight * .8;
 .bottom-right {
   position: absolute;
   bottom: 20%;
-  right: -17%;
-  border-top: 3px solid #bada55;
-  border-left: 9px solid transparent;
-  border-right: 9px solid transparent;
+  // right: -17%;
+  left: 55%;
+  border-top: .3rem solid #bada55;
+  border-left: .9rem solid transparent;
+  border-right: .9rem solid transparent;
   height: 0;
   width: $digitWidth / 7.2;
   transform: rotate(90deg);
@@ -311,10 +317,10 @@ $digitHeight: $headerHeight * .8;
 
 .bottom {
     position: absolute;
-    bottom: 0px;
-    border-bottom: 2px solid #bada55;
-    border-left: 9px solid transparent;
-    border-right: 9px solid transparent;
+    bottom: 0;
+    border-bottom: .2rem solid #bada55;
+    border-left: .9rem solid transparent;
+    border-right: .9rem solid transparent;
     height: 0;
     width: $digitWidth / 3.1;
     left: 10%;
@@ -326,9 +332,9 @@ $digitHeight: $headerHeight * .8;
     position: absolute;
     top: 73.6%;
     left: -16%;
-    border-bottom: 3px solid #bada55;
-    border-left: 9px solid transparent;
-    border-right: 9px solid transparent;
+    border-bottom: .3rem solid #bada55;
+    border-left: .9rem solid transparent;
+    border-right: .9rem solid transparent;
     height: 0;
     width: $digitWidth / 7.2;
     transform: rotate(90deg);
@@ -341,9 +347,9 @@ $digitHeight: $headerHeight * .8;
   position: absolute;
   top: 23.6%;
   left: -16%;
-  border-bottom: 3px solid #bada55;
-  border-left: 9px solid transparent;
-  border-right: 9px solid transparent;
+  border-bottom: .3rem solid #bada55;
+  border-left: .9rem solid transparent;
+  border-right: .9rem solid transparent;
   height: 0;
   width: $digitWidth / 7.2;
   transform: rotate(90deg);
@@ -355,9 +361,9 @@ $digitHeight: $headerHeight * .8;
 .middle {
   position: absolute;
   top: 50%;
-  border-bottom: 2px solid #bada55;
-  border-left: 9px solid transparent;
-  border-right: 9px solid transparent;
+  border-bottom: .2rem solid #bada55;
+  border-left: .9rem solid transparent;
+  border-right: .9rem solid transparent;
   height: 0;
   width: $digitWidth / 3.1;
   left: 10%;
@@ -379,12 +385,11 @@ $digitHeight: $headerHeight * .8;
 
 
 .timer {
-  border: .4em inset;
+  border: .6rem inset;
 
   background: black;
-  padding: 2px;
+  padding: .2rem;
 
-  // border: 2px solid magenta;
   position: absolute;
   width: 20%;
   height: 80%;
@@ -407,7 +412,7 @@ body {
 $gridWidth: $boardWidth;
 $gridHeight: $boardHeight * .85;
 .grid {
-    border: .4em outset #CCC;
+    border: .4rem outset #CCC;
     position: relative;
     top: 5%;
     left: 0%;
@@ -415,18 +420,15 @@ $gridHeight: $boardHeight * .85;
     height: $gridHeight;
     overflow: hidden;
 
-    box-shadow: 0px 1px 4px 0px;
+    box-shadow: 0 .1rem .4rem 0;
 
 }
 
 .row {
-  // border: .2px solid black;
-  // background: black;
   position: relative;
   display: flex;
   height: $gridHeight / 16.1;
   width: $gridWidth;
-  // padding: .5px;
 }
 
 // .flag {
@@ -441,8 +443,8 @@ $gridHeight: $boardHeight * .85;
   align-items: center;
 
   background: #c0c0c0;
-  border: 1px solid black;
-  border-width: 2px 0 0 2px;
+  border: .1rem solid black;
+  border-width: .2rem 0 0 .2rem;
   height: 100%;
   width: 6.25%;
   &.covered {
@@ -450,13 +452,13 @@ $gridHeight: $boardHeight * .85;
     background: #c0c0c0;
     border-color: #ebebed;
     border-style: outset;
-    border-width: 2px 0 0 2px;
+    border-width: .2rem 0 0 .2rem;
 
     opacity: 1;
     height: 100%;
     width: 6.25%;
     color: transparent;
-    cursor: pointer
+    cursor: pointer;
 
   }
   &:active {
