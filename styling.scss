@@ -16,8 +16,8 @@ html {
   
 }
 
-body {
-}
+// body {
+// }
 
 //variables
 $boardHeight: 90vh * .8;
@@ -474,9 +474,9 @@ $gridHeight: $boardHeight * .85;
   cursor: pointer;
 }
 
-.bomb {
+// .bomb {
 
-  &.none {
-    // display: none;
-  }
-}
+//   // &.none {
+//   //   // display: none;
+//   // }
+// }
