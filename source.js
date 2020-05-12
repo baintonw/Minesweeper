@@ -495,4 +495,4 @@ smiley.addEventListener('mouseup', (e) => {
 
 })
 
-console.log('version: v2')
+console.log('version: v3')
