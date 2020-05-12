@@ -495,4 +495,4 @@ smiley.addEventListener('mouseup', (e) => {
 
 })
 let date = new Date();
-console.log('version: v11, date: ', date, 'pushed to git first')
+console.log('version: v14, date: ', date, 'pushed to git first')
