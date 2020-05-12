@@ -494,5 +494,5 @@ smiley.addEventListener('mouseup', (e) => {
   smiley.src = "./public/minesweeper_face_normal.png"
 
 })
-
-console.log('version: v13')
+let date = new Date();
+console.log('version: v13, date: ', date)
