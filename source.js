@@ -494,3 +494,6 @@ smiley.addEventListener('mouseup', (e) => {
   smiley.src = "./public/minesweeper_face_normal.png"
 
 })
+
+
+//font size and js typo fixed
