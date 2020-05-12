@@ -495,5 +495,4 @@ smiley.addEventListener('mouseup', (e) => {
 
 })
 
-
-//font size and js typo fixed
+console.log('version: v2')
