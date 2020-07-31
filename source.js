@@ -13,10 +13,6 @@ const timerSeconds = document.querySelector('#seconds')
 const timerTens = document.querySelector('#tens-seconds')
 const timerMinutes = document.querySelector('#minutes')
 
-
-
-
-
 //grid bombs and numbers
 let rows = []
 let cells = []
@@ -28,10 +24,9 @@ let covered = 0
 let correct = 0
 let flags = 40
 
-
-
-
+//playing
 let playing = false
+
 //timer
 let seconds = 0
 
@@ -61,7 +56,6 @@ function init() {
   createGrid(16, 16);
   placeBombs(cells);
   placeNumbers(bombCells);
-
   covered = cells.length - bombCells.length
   count(flags)
   time(seconds)
@@ -77,11 +71,10 @@ function timeElapsed() {
 function stop() {
   seconds = 0;
   clearInterval(start)
-
 }
 
 
-
+//creates the 40 x 40 grid
 function createGrid(x, y) {
   let id = 0
   for(let i = 0; i < x; i++) {
@@ -101,18 +94,14 @@ function createGrid(x, y) {
     cells.push(children)
   })
   cells = cells.flat()
-  // console.log('INIT CELLS', cells)
 }
 
-
+//place bomb tiles at start of game
 function placeBombs(cells) {
-  // console.log('ALL CELLS IN placeBOMBS: ', cells)
-  // console.log('this is a cell: ', cells[randomI], 'this is its index: ', cells.indexOf(cells[randomI]))
   let i = 0
   while (i < 40) {
     let randomI = (Math.floor(Math.random() * 256))
     cell = cells[randomI]
-
     if(cell.innerText !== '💣'){
       cell.innerText = '💣'
       i++
@@ -122,6 +111,7 @@ function placeBombs(cells) {
   }
 }
 
+//find all adjacent cells to any given cell
 function findAdjacent(cell) {
   if(cell === null || cell === undefined) return
     let adjacentCells = []
@@ -153,7 +143,7 @@ function placeNumbers(bombCells) {
   })
 
 }
-
+//end game
 function gameOver() {
   bombCells.forEach(bombCell => {
     bombCell.classList.remove('covered')
@@ -166,6 +156,7 @@ function gameOver() {
   return
 }
 
+//reveals all empty or numbered adjacent tiles - also, if adjacent cell is empty, reveals those adj. cells
 function reveal(node) {
   if(node === null) return;
   const empty = node.classList.value === 'cell'
@@ -198,13 +189,10 @@ function reveal(node) {
       neighbors.forEach(neighbor => {
         reveal(neighbor)
       })
-      // console.log('neighbors: ', neighbors)
-
   }
 }
 
 //check if cells are bombs or flags
-
 function check(node) {
   let neighbors = findAdjacent(node)
   neighbors = neighbors.filter(neighbor => !!neighbor)
@@ -229,10 +217,9 @@ function check(node) {
   checkWin()
 }
 
+//handles click function
 function handleClick(e){
-  
   if(e.target.classList.value === "cell covered" || e.target.classList.value === "cell") {
-    
     let cell = e.target
     if(playing === false) {
       playing = true
@@ -243,17 +230,16 @@ function handleClick(e){
 
   }
 }
-
+//plants flag if none present, else removes flag
 function plantFlag(e, node) {
-    // console.log('Which event is this? ', e, 'which node is this ', node)
     let cell;
+
     if(!node) {
       e.preventDefault()
       cell = e.target
     } else if(node) {
       cell = node
     }
-
 
     if(cell.classList.value === "cell covered flag") {
       cell.classList.remove('flag')
@@ -274,11 +260,11 @@ function plantFlag(e, node) {
         correct++
         checkWin()
       }
-      // console.log('RIGHT CLICK - this is the innerText: ', cell.innerText, cell.classList.value)
     }
     return false;
 }
 
+//did they win?s
 function checkWin() {
   if(correct === bombCells.length && covered === 0) {
     alert('Congratulations! You Win!')
@@ -288,6 +274,7 @@ function checkWin() {
   }
 }
 
+//handles spacebar press
 function handleCheck(e) {
   if(e.code === "Space") {
       if(mouseTarget.classList.value === "cell covered" || mouseTarget.classList.value === "cell covered flag") {
@@ -298,6 +285,7 @@ function handleCheck(e) {
   }
 }
 
+//start game
 init()
 
 
@@ -309,7 +297,7 @@ function pad(num, size) {
 }
 
 //counter function
-
+//THIS PART HAS CODE SMELL
 function count(flags) {
   flags > 999 ? flags = 999 : null
   flags = pad(flags, 3)
@@ -340,136 +328,132 @@ function count(flags) {
     timerMinutes.className = "digit nine"
   }
 
-
-  // console.log('hundreds decimal place: ', hundredDecimal)
-    if(tensDecimal === '0') {
-      tens.className = "digit zero"
-    } else if(tensDecimal === '1') {
-      tens.className = "digit one"
-    } else if(tensDecimal === '2') {
-      tens.className = "digit two"
-    } else if(tensDecimal === '3') {
-      tens.className = "digit three"
-    } else if(tensDecimal === '4') {
-      tens.className = "digit four"
-    } else if(tensDecimal === '5') {
-      tens.className = "digit five"
-    } else if(tensDecimal === '6') {
-      tens.className = "digit six"
-    } else if(tensDecimal === '7') {
-      tens.className = "digit seven"
-    } else if(tensDecimal === '8') {
-      tens.className = "digit eight"
-    } else if(tensDecimal === '9') {
-      tens.className = "digit nine"
-    }
-
-    if(onesDecimal === '0') {
-      ones.className = "digit zero"
-    } else if(onesDecimal === '1') {
-      ones.className = "digit one"
-    } else if(onesDecimal === '2') {
-      ones.className = "digit two"
-    } else if(onesDecimal === '3') {
-      ones.className = "digit three"
-    } else if(onesDecimal === '4') {
-      ones.className = "digit four"
-    } else if(onesDecimal === '5') {
-      ones.className = "digit five"
-    } else if(onesDecimal === '6') {
-      ones.className = "digit six"
-    } else if(onesDecimal === '7') {
-      ones.className = "digit seven"
-    } else if(onesDecimal === '8') {
-      ones.className = "digit eight"
-    } else if(onesDecimal === '9') {
-      ones.className = "digit nine"
-    }
-
+  if(tensDecimal === '0') {
+    tens.className = "digit zero"
+  } else if(tensDecimal === '1') {
+    tens.className = "digit one"
+  } else if(tensDecimal === '2') {
+    tens.className = "digit two"
+  } else if(tensDecimal === '3') {
+    tens.className = "digit three"
+  } else if(tensDecimal === '4') {
+    tens.className = "digit four"
+  } else if(tensDecimal === '5') {
+    tens.className = "digit five"
+  } else if(tensDecimal === '6') {
+    tens.className = "digit six"
+  } else if(tensDecimal === '7') {
+    tens.className = "digit seven"
+  } else if(tensDecimal === '8') {
+    tens.className = "digit eight"
+  } else if(tensDecimal === '9') {
+    tens.className = "digit nine"
   }
 
-  function time(seconds) {
-    seconds > 999 ? seconds = 999 : null
-    seconds = pad(seconds, 3)
-    // console.log(seconds)
-
-    let hundredDecimal = seconds[0]
-    let tensDecimal = seconds[1]
-    let onesDecimal = seconds[2]
-
-    if(hundredDecimal === '0') {
-      minutes.className = "digit zero"
-    } else if(hundredDecimal === '1') {
-      minutes.className = "digit one"
-    } else if(hundredDecimal === '2') {
-      minutes.className = "digit two"
-    } else if(hundredDecimal === '3') {
-      minutes.className = "digit three"
-    } else if(hundredDecimal === '4') {
-      minutes.className = "digit four"
-    } else if(hundredDecimal === '5') {
-      minutes.className = "digit five"
-    } else if(hundredDecimal === '6') {
-      minutes.className = "digit six"
-    } else if(hundredDecimal === '7') {
-      minutes.className = "digit seven"
-    } else if(hundredDecimal === '8') {
-      minutes.className = "digit eight"
-    } else if(hundredDecimal === '9') {
-      minutes.className = "digit nine"
-    }
-
-
-    // console.log('hundreds decimal place: ', hundredDecimal)
-      if(tensDecimal === '0') {
-        timerTens.className = "digit zero"
-      } else if(tensDecimal === '1') {
-        timerTens.className = "digit one"
-      } else if(tensDecimal === '2') {
-        timerTens.className = "digit two"
-      } else if(tensDecimal === '3') {
-        timerTens.className = "digit three"
-      } else if(tensDecimal === '4') {
-        timerTens.className = "digit four"
-      } else if(tensDecimal === '5') {
-        timerTens.className = "digit five"
-      } else if(tensDecimal === '6') {
-        timerTens.className = "digit six"
-      } else if(tensDecimal === '7') {
-        timerTens.className = "digit seven"
-      } else if(tensDecimal === '8') {
-        timerTens.className = "digit eight"
-      } else if(tensDecimal === '9') {
-        timerTens.className = "digit nine"
-      }
-
-      if(onesDecimal === '0') {
-        timerSeconds.className = "digit zero"
-      } else if(onesDecimal === '1') {
-        timerSeconds.className = "digit one"
-      } else if(onesDecimal === '2') {
-        timerSeconds.className = "digit two"
-      } else if(onesDecimal === '3') {
-        timerSeconds.className = "digit three"
-      } else if(onesDecimal === '4') {
-        timerSeconds.className = "digit four"
-      } else if(onesDecimal === '5') {
-        timerSeconds.className = "digit five"
-      } else if(onesDecimal === '6') {
-        timerSeconds.className = "digit six"
-      } else if(onesDecimal === '7') {
-        timerSeconds.className = "digit seven"
-      } else if(onesDecimal === '8') {
-        timerSeconds.className = "digit eight"
-      } else if(onesDecimal === '9') {
-        timerSeconds.className = "digit nine"
-      }
+  if(onesDecimal === '0') {
+    ones.className = "digit zero"
+  } else if(onesDecimal === '1') {
+    ones.className = "digit one"
+  } else if(onesDecimal === '2') {
+    ones.className = "digit two"
+  } else if(onesDecimal === '3') {
+    ones.className = "digit three"
+  } else if(onesDecimal === '4') {
+    ones.className = "digit four"
+  } else if(onesDecimal === '5') {
+    ones.className = "digit five"
+  } else if(onesDecimal === '6') {
+    ones.className = "digit six"
+  } else if(onesDecimal === '7') {
+    ones.className = "digit seven"
+  } else if(onesDecimal === '8') {
+    ones.className = "digit eight"
+  } else if(onesDecimal === '9') {
+    ones.className = "digit nine"
   }
 
+}
+
+function time(seconds) {
+  seconds > 999 ? seconds = 999 : null
+  seconds = pad(seconds, 3)
+  // console.log(seconds)
+
+  let hundredDecimal = seconds[0]
+  let tensDecimal = seconds[1]
+  let onesDecimal = seconds[2]
+
+  if(hundredDecimal === '0') {
+    minutes.className = "digit zero"
+  } else if(hundredDecimal === '1') {
+    minutes.className = "digit one"
+  } else if(hundredDecimal === '2') {
+    minutes.className = "digit two"
+  } else if(hundredDecimal === '3') {
+    minutes.className = "digit three"
+  } else if(hundredDecimal === '4') {
+    minutes.className = "digit four"
+  } else if(hundredDecimal === '5') {
+    minutes.className = "digit five"
+  } else if(hundredDecimal === '6') {
+    minutes.className = "digit six"
+  } else if(hundredDecimal === '7') {
+    minutes.className = "digit seven"
+  } else if(hundredDecimal === '8') {
+    minutes.className = "digit eight"
+  } else if(hundredDecimal === '9') {
+    minutes.className = "digit nine"
+  }
+
+  if(tensDecimal === '0') {
+    timerTens.className = "digit zero"
+  } else if(tensDecimal === '1') {
+    timerTens.className = "digit one"
+  } else if(tensDecimal === '2') {
+    timerTens.className = "digit two"
+  } else if(tensDecimal === '3') {
+    timerTens.className = "digit three"
+  } else if(tensDecimal === '4') {
+    timerTens.className = "digit four"
+  } else if(tensDecimal === '5') {
+    timerTens.className = "digit five"
+  } else if(tensDecimal === '6') {
+    timerTens.className = "digit six"
+  } else if(tensDecimal === '7') {
+    timerTens.className = "digit seven"
+  } else if(tensDecimal === '8') {
+    timerTens.className = "digit eight"
+  } else if(tensDecimal === '9') {
+    timerTens.className = "digit nine"
+  }
+
+  if(onesDecimal === '0') {
+    timerSeconds.className = "digit zero"
+  } else if(onesDecimal === '1') {
+    timerSeconds.className = "digit one"
+  } else if(onesDecimal === '2') {
+    timerSeconds.className = "digit two"
+  } else if(onesDecimal === '3') {
+    timerSeconds.className = "digit three"
+  } else if(onesDecimal === '4') {
+    timerSeconds.className = "digit four"
+  } else if(onesDecimal === '5') {
+    timerSeconds.className = "digit five"
+  } else if(onesDecimal === '6') {
+    timerSeconds.className = "digit six"
+  } else if(onesDecimal === '7') {
+    timerSeconds.className = "digit seven"
+  } else if(onesDecimal === '8') {
+    timerSeconds.className = "digit eight"
+  } else if(onesDecimal === '9') {
+    timerSeconds.className = "digit nine"
+  }
+}
 
 
 
 
+//handle click
 document.addEventListener('click', handleClick)
 
 //drops flags
@@ -477,7 +461,6 @@ document.addEventListener('contextmenu', plantFlag, false);
 
 //Determines mouseTarget on mouseover
 document.addEventListener('mouseover', function(e) {
-  // console.log('mouse event: ', e, 'mouse target: ', e.target)
   mouseTarget = e.target
 })
 
@@ -494,5 +477,6 @@ smiley.addEventListener('mouseup', (e) => {
   smiley.src = "./public/minesweeper_face_normal.png"
 
 })
+
 let date = new Date();
-console.log('version: v14, date: ', date, 'pushed to git first')
+console.log('Welcome to Minesweeper!')
