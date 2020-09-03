@@ -1,3 +1,2 @@
 # Minesweeper
-Welcome to MySweeper!
-This is for my Heroku deployment.
+Welcome to MySweeper! A loving recreation of a classic Windows game.
